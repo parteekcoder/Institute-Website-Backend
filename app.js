@@ -1,4 +1,5 @@
 const express = require('express');
+const updateDetails = require('./utils/updateDetails');
 const NoticeRouter = require('./routes/notice')
 const CalenderRouter = require('./routes/calender')
 const LatestNewsRouter = require('./routes/latestNews')
@@ -13,6 +14,7 @@ const app = express();
 
 //middleware
 app.use(express.json());
+app.all('*', updateDetails);
 
 //routes
 app.use("/notice", NoticeRouter);
