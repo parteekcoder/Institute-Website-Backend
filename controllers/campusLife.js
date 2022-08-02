@@ -15,7 +15,7 @@ exports.add = async (req, res) => {
 
 
     Campuslife.save()
-        .then(() => res.json('Topic Added!'))
+        .then(() => res.status(201).json('Topic Added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 
 }

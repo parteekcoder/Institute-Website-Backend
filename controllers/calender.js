@@ -16,23 +16,23 @@ exports.addCalender = async (req, res) => {
     });
 
     calender.save()
-        .then(() => res.json('New Notice Added!'))
+        .then(() => res.status(201).json('New Notice Added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 }
 
 //----------------------------------------------------------------------->
 exports.getCalender = async (req, res) => {
     Calender.find()
-        .then(cal => res.json(cal))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(cal => res.status(200).json(cal))
+        .catch(err => res.status(404).json('Error: ' + err));
 }
 
 //----------------------------------------------------------------------->
 exports.getCalenderFromCategory = async (req, res) => {
     const category = req.params.category;
     Calender.find({ calenderCategory: category })
-        .then(cal => res.json(cal))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(cal => res.status(200).json(cal))
+        .catch(err => res.status(404).json('Error: ' + err));
 }
 
 //----------------------------------------------------------------------->
@@ -51,13 +51,13 @@ exports.updateCalender = async (req, res) => {
             date: date,
         }
     }, { useFindAndModify: false })
-        .then(() => res.json('Notice Updated Successfully!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(() => res.status(201).json('Notice Updated Successfully!'))
+        .catch(err => res.status(404).json('Error: ' + err));
 }
 
 //----------------------------------------------------------------------->
 exports.deleteCalender = async (req, res) => {
     Calender.findByIdAndDelete(req.params._id)
-        .then(() => res.json('Notice deleted.'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(() => res.status(204).json('Notice deleted.'))
+        .catch(err => res.status(404).json('Error: ' + err));
 }

@@ -14,7 +14,7 @@ exports.addResearchNews = async (req, res) => {
     });
 
     researchnews.save()
-        .then(() => res.json('News Added!'))
+        .then(() => res.status(201).json('News Added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 
 }

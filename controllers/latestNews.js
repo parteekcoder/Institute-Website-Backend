@@ -14,6 +14,6 @@ exports.addNews = async (req, res) => {
     });
 
     Latestnews.save()
-        .then(() => res.json('News Added!'))
+        .then((news) => res.status(201).json(news))
         .catch(err => res.status(400).json('Error: ' + err));
 }

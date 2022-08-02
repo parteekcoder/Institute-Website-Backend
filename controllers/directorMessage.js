@@ -18,15 +18,15 @@ exports.addMessage = async (req, res) => {
     });
 
     message.save()
-        .then(() => res.json('New mesage Added!'))
+        .then(() => res.status(201).json('New mesage Added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 }
 
 //----------------------------------------------------------------------->
 exports.getMessage = async (req, res) => {
     Message.find()
-        .then(message => res.json(message))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(message => res.status(200).json(message))
+        .catch(err => res.status(404).json('Error: ' + err));
 }
 
 
@@ -40,12 +40,12 @@ exports.updateMessage = async (req, res) => {
     Notice.findByIdAndUpdate(_id, {
         $set: {
             title: title,
-            message: messageText,
+            messageText: messageText,
             image: img,
             date: date,
         }
     }, { useFindAndModify: false })
-        .then(() => res.json('Message Updated Successfully!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(() => res.status(201).json('Message Updated Successfully!'))
+        .catch(err => res.status(404).json('Error: ' + err));
 }
 

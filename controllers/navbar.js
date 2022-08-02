@@ -7,7 +7,7 @@ exports.show = async (req, res) => {
         if (err) {
             res.Status(500).send("Something wrong happend");
         } else {
-            res.json(data);
+            res.status(200).json(data);
         }
     });
 }
@@ -82,7 +82,7 @@ exports.add = async (req, res) => {
                 });
 
                 navbar.save();
-                res.send("Navbar created");
+                res.status(201).send("Navbar created");
             } else {
                 let arr = data[`${type}`][`${subtype}`];
                 console.log(arr);
@@ -128,7 +128,7 @@ exports.delete = async (req, res) => {
                     if (err) {
                         res.Status(500).send("Something wrong happend");
                     } else {
-                        res.send(data);
+                        res.status(204).send(data);
                     }
                 }
             );
