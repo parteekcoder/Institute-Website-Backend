@@ -3,10 +3,22 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    noticeTitle: { type: String, required: true },
-    noticeText: { type: String, required: true },
-    noticeCategory: { type: String, required: true },
-    date: { type: Date, required: true },
+    noticeTitle: {
+        type: String,
+        required: true
+    },
+    noticeText: {
+        type: String,
+        required: true
+    },
+    noticeCategory: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        required: true
+    },
     uploadDate: {
         type: Date,
         default: Date.now()
