@@ -21,6 +21,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //routes
+app.get('/',(req,res)=>{
+    res.send("Working...");
+})
 app.use("/notice", NoticeRouter);
 app.use("/calender", CalenderRouter);
 app.use("/latestNews", LatestNewsRouter);
