@@ -7,8 +7,11 @@ const Router = express.Router();
 
 Router.route('/add').post(researchNewsController.addResearchNews);
 
+Router.route('/show').get(researchNewsController.showResearchNews);
 
+Router.route('/showbyid').post(researchNewsController.showResearchNewsbyId);
 
+Router.route('/update').post(researchNewsController.updateResearchNews);
 
 //Export----------------------------->
 module.exports = Router;

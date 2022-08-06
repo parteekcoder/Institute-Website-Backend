@@ -3,61 +3,29 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    Administration: {
-        type: Object, default: {
-            'AboutUs': [],
-            'Leadership': [],
-            'Cells': [],
-            'Committees': [],
-            'GoverningBodies': [],
-        }
+    Administration:{
+        type:Array,
+        default:[]
     },
-
-    Academics: {
-        type: Object, default: {
-            'Departments': [],
-            'AcademicSystem': [],
-            'ProgrammeofStudy': [],
-            'Centers': [],
-            'AcademicServices': [],
-            'AcademicFacilities': [],
-            'Convocation': [],
-            'OtherLinks': [],
-        }
+    Acadmeics:{
+        type:Array,
+        default:[]
     },
-
-    Admissions: {
-        type: Object, default: {
-            'ProspectiveStudents': [],
-            'JoinNitj': [],
-            'AntiRagging': [],
-            'InstitueProspectus': [],
-        }
+    Admissions:{
+        type:Array,
+        default:[]
     },
-
-    LifeAtNITJ: {
-        type: Object, default: {
-            'ClubsandSocities': [],
-            'Accommodation': [],
-            'NitJFestivals': [],
-            'Scholarships': [],
-            'CampusAmmenities': [],
-            'HealthAndWellness': [],
-        }
+    Research:{
+        type:Array,
+        default:[]
     },
-
-    Research: {
-        type: Object, default: {
-            'Researches': [],
-            'Incubations': [],
-            'Consultancies': [],
-            'UpcomingEvents': [],
-        }
+    Alumni:{
+        type:Array,
+        default:[]
     },
-    Alumni: {
-        type: Object, default: {
-            'Alumni': [],
-        }
+    LifeatNITJ:{
+        type:Array,
+        default:[]
     }
 }, {
     timestamps: true,

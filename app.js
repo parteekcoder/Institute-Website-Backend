@@ -17,6 +17,9 @@ app.use(express.json());
 app.all('*', updateDetails);
 
 //routes
+app.get('/',(req,res)=>{
+    res.send("Working...");
+})
 app.use("/notice", NoticeRouter);
 app.use("/calender", CalenderRouter);
 app.use("/latestNews", LatestNewsRouter);
