@@ -1,11 +1,9 @@
 const ResearchNews = require("./../models/Researchnews.model");
-const uuid = require("uuid").v4();
+const uuid = require("uuid");
 //----------------------------------->
 
 //----------------------------------------------------------------------->
 exports.addResearchNews = async (req, res) => {
-
-  console.log(req);
 
   const researchTitle = req.body.researchTitle;
   const researchDesc = req.body.researchDesc;
@@ -13,7 +11,9 @@ exports.addResearchNews = async (req, res) => {
   const type = req.body.type;
   const id = uuid.v4();
   
-  const researchnews = new Researchnews({
+  console.log(req.body);
+
+  const researchnews = new ResearchNews({
     id,
     researchTitle,
     researchDesc,
@@ -38,9 +38,10 @@ exports.showResearchNews = async (req, res) => {
 };
 
 exports.showResearchNewsbyId = async (req, res) => {
+  console.log(req.body);
   ResearchNews.find({ id: req.body.id }, (err, data) => {
     if (err) {
-      res.Status(500).send("Something wrong happend");
+      res.sendStatus(500);
     } else {
       res.send(data);
     }
@@ -48,21 +49,26 @@ exports.showResearchNewsbyId = async (req, res) => {
 };
 
 exports.updateResearchNews = async (req, res) => {
+  console.log(req.body);
   ResearchNews.findOneAndUpdate(
     { id: req.body.id },
-    {
+    {$set:{
       researchTitle: req.body.researchTitle,
       researchDesc: req.body.researchDesc,
       image: req.body.image,
       sourceofinformation: req.body.sourceofinformation,
       type: req.body.type,
+    }
     },
     (err,data)=>{
         if(err){
             console.log(err);
-            res.Status(500);
+            res.sendStatus(500);
         }
-        else res.Status(200).send(data);
+        else{
+          console.log(data);
+          res.sendStatus(200);
+        }
     }
   );
 };

@@ -1,13 +1,16 @@
 const express = require('express');
 const navbarController = require('./../controllers/navbar');
+const bodyParser = require("body-parser");
+const Router = express.Router();
+
+Router.use(bodyParser.json());
+Router.use(bodyParser.urlencoded({ extended: true }));
 //----------------------------------->
 
-//Router
-const Router = express.Router();
 
 Router.route('/show').get(navbarController.show);
 Router.route('/add').post(navbarController.add);
-Router.route('/delete').delete(navbarController.delete);
+Router.route('/delete').post(navbarController.delete);
 Router.route('/create').post(navbarController.create);
 
 
