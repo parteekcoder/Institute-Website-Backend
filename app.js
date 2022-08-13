@@ -9,9 +9,8 @@ const NavBarRouter = require('./routes/navbar')
 const DirectorMessageRouter = require('./routes/directorMessage')
 const campusLifeRouter = require('./routes/campusLife')
 const imageUploadRouter = require('./routes/imageUploads');
-const cors=require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const { trusted } = require('mongoose');
 
 //----------------------------------->
 
@@ -29,7 +28,7 @@ app.use(cors());
 
 
 //routes
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send("Working...");
 })
 app.use("/notice", NoticeRouter);
