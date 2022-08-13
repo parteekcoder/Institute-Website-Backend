@@ -69,21 +69,14 @@ exports.add = async (req, res) => {
       const name = req.body.name;
       const id = uuid.v4();
       
-      console.log(type, subtype, link, name);
-
       let idx=obj[`${type}`].indexOf(`${subtype}`);
       data[`${type}`][idx].push({name,link,id});
-      console.log(data);
-      Navbar.findOneAndUpdate({}, {$set:data}, (err, data) => {
-        if (err) {
-          res.send("Something wrong happend");
-        } else {
-          res.send(data);
-        }
-      });
+  
+      Navbar.findOneAndUpdate({}, {$set:data},(err,data));
 
     }
   });
+  
 };
 
 //----------------------------------------------------------------------->
@@ -96,6 +89,8 @@ exports.delete = async (req, res) => {
       const subtype = req.body.subtype;
       const id = req.body.id;
       
+      console.log(type,subtype,id);
+
       let idx=obj[`${type}`].indexOf(`${subtype}`);
       let arr=data[`${type}`][idx];
 
@@ -105,16 +100,14 @@ exports.delete = async (req, res) => {
           break;
         }
       }
+      data[`${type}`][idx]=arr;
 
-      Navbar.findOneAndUpdate({}, {$set:data}, (err, data) => {
-        if (err) {
-          res.send("Something wrong happend");
-        } else {
-          res.send(data);
-        }
-      });
+      Navbar.findOneAndUpdate({}, {$set:data});
+
     }
   });
+
+  res.sendStatus(200);
 };
 
 exports.create= async(req,res)=>{

@@ -9,6 +9,10 @@ const NavBarRouter = require('./routes/navbar')
 const DirectorMessageRouter = require('./routes/directorMessage')
 const campusLifeRouter = require('./routes/campusLife')
 const imageUploadRouter = require('./routes/imageUploads');
+const cors=require('cors');
+const bodyParser = require('body-parser');
+const { trusted } = require('mongoose');
+
 //----------------------------------->
 
 //initialize app
@@ -17,7 +21,11 @@ const app = express();
 //middleware
 app.use(express.json());
 app.all('*', updateDetails);
+app.use(express.urlencoded());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 
 //routes
