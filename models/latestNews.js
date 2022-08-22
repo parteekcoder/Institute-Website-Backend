@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Schema = new mongoose.Schema({
     latestnewsTitle: { type: String, required: true },
     latestnewsText: { type: String, required: true },
+    latestnewsCategory: { type: String, required: true },
     date: { type: Date, required: true },
     uploadDate: {
         type: Date,
