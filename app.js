@@ -6,7 +6,7 @@ const CalenderRouter = require('./routes/calender')
 const LatestNewsRouter = require('./routes/latestNews')
 const ResearchNewsRouter = require('./routes/researchNews')
 const NavBarRouter = require('./routes/navbar')
-const DirectorMessageRouter = require('./routes/directorMessage')
+const MessageRouter = require('./routes/message')
 const campusLifeRouter = require('./routes/campusLife')
 const imageUploadRouter = require('./routes/imageUploads');
 const cors = require('cors');
@@ -33,7 +33,7 @@ app.use("/calender", CalenderRouter);
 app.use("/latestNews", LatestNewsRouter);
 app.use("/researchNews", ResearchNewsRouter);
 app.use("/navbar", NavBarRouter);
-app.use("/directorMessage", DirectorMessageRouter);
+app.use("/message", MessageRouter);
 app.use("/campusLife", campusLifeRouter);
 app.use("/uploadImage", imageUploadRouter);
 

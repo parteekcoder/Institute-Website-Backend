@@ -1,4 +1,4 @@
-const Message = require('./../models/directorMessage');
+const Message = require('../models/message');
 //----------------------------------->
 
 //----------------------------------------------------------------------->

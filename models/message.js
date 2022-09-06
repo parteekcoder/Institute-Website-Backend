@@ -11,7 +11,7 @@ const Schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    directorName: {
+    name: {
         type: String,
         required: true
     },
@@ -36,13 +36,17 @@ const Schema = new mongoose.Schema({
             designation: null,
             department: null
         }
+    },
+    designation: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true,
 });
 
 //Model---------------------------->
-const Model = mongoose.model('directorMessage', Schema);
+const Model = mongoose.model('message', Schema);
 
 //Export----------------------------->
 module.exports = Model;
