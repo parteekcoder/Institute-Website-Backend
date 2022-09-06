@@ -6,15 +6,19 @@ exports.addMessage = async (req, res) => {
     const title = req.body.title;
     const messageText = req.body.messageText;
     const image = req.body.img;
-    const directorName = req.body.directorName;
+    const name = req.body.name;
     const date = Date.parse(req.body.date);
+    const SourceOfInfo = req.body.sourceOfInfo;
+    const designation = req.body.designation;
 
     const message = new Message({
         title,
         messageText,
         image,
-        directorName,
-        date
+        name,
+        date,
+        SourceOfInfo,
+        designation
     });
 
     message.save()

@@ -17,9 +17,11 @@ const Schema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: true
 
-    }, date: { type: Date, required: true },
+    }, date: { 
+        type: Date, 
+        required: true 
+    },
     uploadDate: {
         type: Date,
         default: Date.now()
