@@ -7,7 +7,6 @@ exports.addMessage = async (req, res) => {
     const messageText = req.body.messageText;
     const image = req.body.img;
     const name = req.body.name;
-    const date = Date.parse(req.body.date);
     const SourceOfInfo = req.body.sourceOfInfo;
     const designation = req.body.designation;
 
@@ -16,7 +15,6 @@ exports.addMessage = async (req, res) => {
         messageText,
         image,
         name,
-        date,
         SourceOfInfo,
         designation
     });
