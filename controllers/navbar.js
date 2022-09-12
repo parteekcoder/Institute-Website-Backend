@@ -51,8 +51,6 @@ exports.show = async (req, res) => {
       res.Status(500).send("Something wrong happend");
     } else {
       res.status(200).json(data);
-
-      res.send(data);
     }
   });
 };
