@@ -1,4 +1,4 @@
-const Navbar = require("./../models/navbar");
+const Navbar = require("../models/navbar");
 const uuid = require("uuid");
 //----------------------------------->
 
@@ -50,7 +50,9 @@ exports.show = async (req, res) => {
     if (err) {
       res.Status(500).send("Something wrong happend");
     } else {
-      res.status(200).json(data);
+      res.status(200).send(data);
+
+      res.send(data);
     }
   });
 };
@@ -67,14 +69,21 @@ exports.add = async (req, res) => {
       const name = req.body.name;
       const id = uuid.v4();
       
+      console.log(type, subtype, link, name);
+
       let idx=obj[`${type}`].indexOf(`${subtype}`);
       data[`${type}`][idx].push({name,link,id});
-  
-      Navbar.findOneAndUpdate({}, {$set:data},(err,data));
+      console.log(data);
+      Navbar.findOneAndUpdate({}, {$set:data}, (err, data) => {
+        if (err) {
+          res.send("Something wrong happend");
+        } else {
+          res.send(data);
+        }
+      });
 
     }
   });
-  
 };
 
 //----------------------------------------------------------------------->
@@ -87,8 +96,6 @@ exports.delete = async (req, res) => {
       const subtype = req.body.subtype;
       const id = req.body.id;
       
-      console.log(type,subtype,id);
-
       let idx=obj[`${type}`].indexOf(`${subtype}`);
       let arr=data[`${type}`][idx];
 
@@ -98,14 +105,16 @@ exports.delete = async (req, res) => {
           break;
         }
       }
-      data[`${type}`][idx]=arr;
 
-      Navbar.findOneAndUpdate({}, {$set:data});
-
+      Navbar.findOneAndUpdate({}, {$set:data}, (err, data) => {
+        if (err) {
+          res.send("Something wrong happend");
+        } else {
+          res.send(data);
+        }
+      });
     }
   });
-
-  res.sendStatus(200);
 };
 
 exports.create= async(req,res)=>{

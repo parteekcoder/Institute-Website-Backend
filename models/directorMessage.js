@@ -3,10 +3,23 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    noticeTitle: { type: String, required: true },
-    noticeText: { type: String, required: true },
-    noticeCategory: { type: String, required: true },
-    date: { type: Date, required: true },
+    title: {
+        type: String,
+        required: true
+    },
+    messageText: {
+        type: String,
+        required: true
+    },
+    directorName: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+
+    }, date: { type: Date, required: true },
     uploadDate: {
         type: Date,
         default: Date.now()
@@ -24,21 +37,12 @@ const Schema = new mongoose.Schema({
             department: null
         }
     }
-    //new 
-    // order change
-    //file upload
-    //last updated date
-    //upload date
-    //source of info(e-mail id )
-    //name and dest. of person
-    //department()
 }, {
     timestamps: true,
 });
 
 //Model---------------------------->
-const Model = mongoose.model('Notice', Schema);
-
+const Model = mongoose.model('directorMessage', Schema);
 
 //Export----------------------------->
 module.exports = Model;

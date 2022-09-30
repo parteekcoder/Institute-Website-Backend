@@ -1,5 +1,4 @@
-const ResearchNews = require("./../models/Researchnews.model");
-const uuid = require("uuid");
+const ResearchNews = require("../models/ResearchNews");
 //----------------------------------->
 
 //----------------------------------------------------------------------->
@@ -9,12 +8,8 @@ exports.addResearchNews = async (req, res) => {
   const researchDesc = req.body.researchDesc;
   const sourceofinformation = req.body.sourceofinformation;
   const type = req.body.type;
-  const id = uuid.v4();
   
-  console.log(req.body);
-
   const researchnews = new ResearchNews({
-    id,
     researchTitle,
     researchDesc,
     sourceofinformation,
@@ -23,73 +18,60 @@ exports.addResearchNews = async (req, res) => {
 
   researchnews
     .save()
-    .then(() => res.json("News Added!"))
-    .catch((err) => res.status(400).json("Error: " + err));
+    .then(() => res.status(200).send(researchnews))
+    .catch((err) => res.status(400).send("Something Wrong Happened"));
 };
 
 exports.showResearchNews = async (req, res) => {
   ResearchNews.find({}, (err, data) => {
     if (err) {
-      res.Status(500).send("Something wrong happend");
+      res.status(500).send("Something wrong happend");
     } else {
-      res.send(data);
+      res.status(200).send(data);
     }
   });
 };
 
 exports.showResearchNewsbyId = async (req, res) => {
-  console.log(req.body);
   ResearchNews.find({ id: req.body.id }, (err, data) => {
     if (err) {
-      res.sendStatus(500);
+      res.status(500).send("Something wrong happend");
     } else {
-      res.send(data);
+      res.status(200).send(data);
     }
   });
 };
 
 exports.updateResearchNews = async (req, res) => {
-  console.log(req.body);
   ResearchNews.findOneAndUpdate(
     { id: req.body.id },
-    {$set:{
+    {
       researchTitle: req.body.researchTitle,
       researchDesc: req.body.researchDesc,
       image: req.body.image,
       sourceofinformation: req.body.sourceofinformation,
       type: req.body.type,
-    }
     },
     (err,data)=>{
         if(err){
             console.log(err);
-            res.sendStatus(500);
+            res.status(500).send("Something wrong happend");
         }
-        else{
-          console.log(data);
-          res.sendStatus(200);
-        }
+        else res.status(200).send(data);
     }
   );
 };
 
-// check the delete one case:
-// exports.deleteResearchNews = async (req, res) => {
-//   ResearchNews.findOneAndUpdate(
-//     { id: req.body.id },
-//     {
-//       researchTitle: req.body.researchTitle,
-//       researchDesc: req.body.researchDesc,
-//       image: req.body.image,
-//       sourceofinformation: req.body.sourceofinformation,
-//       type: req.body.type,
-//     },
-//     (err,data)=>{
-//         if(err){
-//             console.log(err);
-//             res.Status(500);
-//         }
-//         else res.Status(200).send(data);
-//     }
-//   );
-// };
+exports.deleteResearchNews = async (req, res) => {
+  ResearchNews.findOneAndUpdate(
+    { id: req.body.id },
+    {$set: { show: false }},
+    (err,data)=>{
+        if(err){
+            res.status(500).send("Something wrong happend");
+        }
+        else res.status(200).send(data);
+    }
+  );
+};
+
