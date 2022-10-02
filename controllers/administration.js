@@ -1,51 +1,51 @@
-const Message = require('./../models/directorMessage');
+const administration = require('./../models/administration');
 //----------------------------------->
 
 //----------------------------------------------------------------------->
-exports.addMessage = async (req, res) => {
+exports.addAdministration = async (req, res) => {
     const title = req.body.title;
-    const messageText = req.body.messageText;
+    const administrationText = req.body.administrationText;
     const image = req.body.img;
     const directorName = req.body.directorName;
     const date = Date.parse(req.body.date);
 
-    const message = new Message({
+    const administration = new administration({
         title,
-        messageText,
+        administrationText,
         image,
         directorName,
         date
     });
 
-    message.save()
+    administration.save()
         .then(() => res.status(201).json('New mesage Added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 }
 
 //----------------------------------------------------------------------->
-exports.getMessage = async (req, res) => {
-    Message.find()
-        .then(message => res.status(200).json(message))
+exports.getAdministration = async (req, res) => {
+    administration.find()
+        .then(administration => res.status(200).json(administration))
         .catch(err => res.status(404).json('Error: ' + err));
 }
 
 
 //----------------------------------------------------------------------->
-exports.updateMessage = async (req, res) => {
+exports.updateAdministration = async (req, res) => {
     const _id = req.params._id;
     const title = req.body.title;
-    const messageText = req.body.messageText;
+    const administrationText = req.body.administrationText;
     const img = req.body.img;
 
     Notice.findByIdAndUpdate(_id, {
         $set: {
             title: title,
-            messageText: messageText,
+            administrationText: administrationText,
             image: img,
             date: date,
         }
     }, { useFindAndModify: false })
-        .then(() => res.status(201).json('Message Updated Successfully!'))
+        .then(() => res.status(201).json('administration Updated Successfully!'))
         .catch(err => res.status(404).json('Error: ' + err));
 }
 

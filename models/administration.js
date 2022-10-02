@@ -3,17 +3,17 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
     messageText: {
         type: String,
         required: true
     },
-    directorName: {
+    Name: {
         type: String,
         required: true
+    },
+    designation: {
+        type: String,
+        required: true,
     },
     image: {
         type: String,
@@ -42,7 +42,7 @@ const Schema = new mongoose.Schema({
 });
 
 //Model---------------------------->
-const Model = mongoose.model('directorMessage', Schema);
+const Model = mongoose.model('Administration', Schema);
 
 //Export----------------------------->
 module.exports = Model;
