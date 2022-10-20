@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const ResearchSchema = new Schema(
   {
-    researchTitle: { type: String, required: true },
-    researchDesc: { type: String, required: true },
+    title: { type: String, required: true },
+    desc: { type: String, required: true },
     image: { type: String },
-    sourceofinformation: { type: Object, default: {} },
+    sourceOfInformation: { type: Object, default: {} },
     type: { type: String },
     show: { type: Boolean, default: true },
   },
@@ -16,6 +16,6 @@ const ResearchSchema = new Schema(
   }
 );
 
-const Research = mongoose.model("Research", ResearchSchema);
+const Research = mongoose.model("ResearchNews", ResearchSchema);
 
 module.exports = Research;

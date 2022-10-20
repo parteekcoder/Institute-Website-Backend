@@ -15,5 +15,7 @@ Router.route('/update').post(AboutController.updateAbout);
 
 Router.route('/delete').post(AboutController.deleteAbout);
 
+Router.route('/showAll').get(AboutController.showAllAbout);
+
 //Export----------------------------->
 module.exports = Router;

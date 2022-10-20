@@ -3,66 +3,46 @@ const Ranking = require("../models/Ranking");
 
 //----------------------------------------------------------------------->
 exports.addRanking = async (req, res) => {
-    const data = new Ranking({
-        ranking: req.body.ranking,
-    });
+  const data = new Ranking({
+    Ranking: req.body.Ranking,
+  });
 
-    data.save((err,data)=>{
-        if(err){
-            res.status(500).send("Something wrong happend");
-            return;
-        }
-        res.status(200).send(data);
-    });
-    
+  data
+    .save()
+    .then(() => res.status(201).send("Ranking added successfully"))
+    .catch((err) => res.status(400).json("Error: " + err));
 };
 
 exports.showRanking = async (req, res) => {
-  Ranking.find({}, (err, data) => {
-    if (err) {
-      res.status(500).send("Something wrong happend");
-    } else {
-        res.status(200).send(data);
-    }
-  });
+  Ranking.find({ show: true })
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.status(400).json("Error: " + err));
 };
 
 exports.showRankingbyId = async (req, res) => {
-    Ranking.find({id: req.body.id}, (err, data) => {
-      if (err) {
-        res.status(500).send("Something wrong happend");
-      } else {
-        res.status(200).send(data);
-      }
-    });
-  };
-  
+  Ranking.findById(req.body.id)
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
 
 exports.updateRanking = async (req, res) => {
-  Ranking.findOneAndUpdate(
-    { id: req.body.id },
-    {$set: { ranking: req.body.ranking }},
-    (err,data)=>{
-        if(err){
-            res.status(500);
-        }
-        else res.status(200).send(data);
-    }
-  );
+  Ranking.findByIdAndUpdate(req.body.id, req.body)
+    .then(() => {
+      res.status(200).send("Ranking updated successfully");
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
 };
 
 exports.deleteRanking = async (req, res) => {
-    Ranking.findOneAndUpdate(
-      { id: req.body.id },
-      {$set: { show:false }},
-      (err,data)=>{
-          if(err){
-              res.status(500).send("Something wrong happend");
-          }
-          else res.status(200).send(data);
-      }
-    );
-  };
-  
+  Ranking.findByIdAndUpdate(req.body.id, { $set: { show: false } })
+    .then(() => {
+      res.status(200).send("Ranking deleted successfully");
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+};
 
-
+exports.showAllRanking = async (req, res) => {
+  Ranking.find({})
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.status(400).json("Error: " + err));
+}

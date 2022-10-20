@@ -15,5 +15,7 @@ Router.route('/update').post(CellController.updateCell);
 
 Router.route('/delete').post(CellController.deleteCell);
 
+Router.route('/showAll').get(CellController.showAllCell);
+
 //Export----------------------------->
 module.exports = Router;

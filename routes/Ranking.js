@@ -15,5 +15,7 @@ Router.route('/update').post(RankingController.updateRanking);
 
 Router.route('/delete').post(RankingController.deleteRanking);
 
+Router.route('/showAll').get(RankingController.showAllRanking);
+
 //Export----------------------------->
 module.exports = Router;
