@@ -1,41 +1,36 @@
-const ResearchNews = require("../models/ResearchNews");
+const ResearchHighlights = require("../models/researchHighlights");
 //----------------------------------->
 
 //----------------------------------------------------------------------->
-exports.addResearchNews = async (req, res) => {
+exports.addResearchHighlights = async (req, res) => {
   const title = req.body.title;
   const desc = req.body.desc;
   const sourceOfInformation = req.body.sourceOfInformation;
   const type = req.body.type;
 
-  const researchnews = new ResearchNews({
+  const ResearchHighlights = new ResearchHighlights({
     title,
     desc,
     sourceOfInformation,
     type,
   });
 
-  researchnews
+  ResearchHighlights
     .save()
-    .then(() => res.status(200).send(researchnews))
+    .then(() => res.status(200).send(ResearchHighlights))
     .catch((err) => res.status(400).send("Something Wrong Happened"));
 };
 
-exports.showResearchNews = async (req, res) => {
-  ResearchNews.find({show:true})
+
+exports.showResearchHighlightsbyId = async (req, res) => {
+  ResearchHighlights.find({ id: req.params.id })
     .then((data) => res.status(200).send(data))
     .catch((err) => res.status(400).send("Something Wrong Happened"));
 };
 
-exports.showResearchNewsbyId = async (req, res) => {
-  ResearchNews.find({ id: req.body.id })
-    .then((data) => res.status(200).send(data))
-    .catch((err) => res.status(400).send("Something Wrong Happened"));
-};
-
-exports.updateResearchNews = async (req, res) => {
-  ResearchNews.findOneAndUpdate(
-    { id: req.body.id },
+exports.updateResearchHighlights = async (req, res) => {
+  ResearchHighlights.findOneAndUpdate(
+    { id: req.params.id },
     {
       title,
       desc,
@@ -47,14 +42,14 @@ exports.updateResearchNews = async (req, res) => {
     .catch((err) => res.status(400).send("Something Wrong Happened"));
 };
 
-exports.deleteResearchNews = async (req, res) => {
-  ResearchNews.findOneAndUpdate({ id: req.body.id }, { $set: { show: false } })
+exports.deleteResearchHighlights = async (req, res) => {
+  ResearchHighlights.findOneAndUpdate({ id: req.params.id }, { $set: { show: false } })
     .then((data) => res.status(200).send(data))
     .catch((err) => res.status(400).send("Something Wrong Happened"));
 };
 
-exports.showAllResearchNews = async (req, res) => {
-  ResearchNews.find({})
+exports.showAllResearchHighlights = async (req, res) => {
+  ResearchHighlights.find({})
     .then((data) => res.status(200).send(data))
     .catch((err) => res.status(400).send("Something Wrong Happened"));
 }

@@ -4,13 +4,11 @@ const app = require('./app');
 //----------------------------------->
 
 //configuration
-// dotenv.config({ path: './config.env' }); 
+dotenv.config({ path: './config.env' }); 
 
 //connection to database------------------------------------------->
 
-const uri = 'mongodb://localhost:27017/test2';
-
-mongoose.connect(uri, {
+mongoose.connect(process.env.URI, {
     useNewUrlParser: true
 }).then(() => {
     console.log("connection to database eshtablished");
@@ -21,7 +19,7 @@ mongoose.connect(uri, {
 
 
 //server listening------------------------------------------------->
-const port = 3000;
+const port = 3000 || process.env.PORT;
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 })

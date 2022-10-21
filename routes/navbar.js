@@ -5,10 +5,7 @@ const navbarController = require("../controllers/Navbar");
 //Router
 const Router = express.Router();
 
-Router.route("/show").get(navbarController.show);
-Router.route("/add").post(navbarController.add);
-Router.route("/delete").delete(navbarController.delete);
-Router.route("/create").post(navbarController.create);
+Router.route("/").post(navbarController.create).get(navbarController.show).patch(navbarController.update).delete(navbarController.delete);;
 
 //Export----------------------------->
 module.exports = Router;

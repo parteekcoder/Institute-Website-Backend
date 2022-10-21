@@ -1,21 +1,14 @@
 const express = require('express');
-const RankingController = require('./../controllers/Ranking');
+const rankingController = require('../controllers/ranking');
 //----------------------------------->
 
 //Router
 const Router = express.Router();
 
-Router.route('/add').post(RankingController.addRanking);
+Router.route('/').post(rankingController.addRanking).get(rankingController.showAllRanking);
 
-Router.route('/show').get(RankingController.showRanking);
+Router.route('/:id').post(rankingController.showRankingbyId).patch(rankingController.updateRanking).delete(rankingController.deleteRanking);
 
-Router.route('/showbyId').post(RankingController.showRankingbyId);
-
-Router.route('/update').post(RankingController.updateRanking);
-
-Router.route('/delete').post(RankingController.deleteRanking);
-
-Router.route('/showAll').get(RankingController.showAllRanking);
 
 //Export----------------------------->
 module.exports = Router;

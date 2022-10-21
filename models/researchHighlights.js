@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const ResearchSchema = new Schema(
   {
-    title: { type: String, required: true },
-    desc: { type: String, required: true },
+    title: { type: String, },
+    desc: { type: String, },
     image: { type: String },
     sourceOfInformation: { type: Object, default: {} },
     type: { type: String },

@@ -1,12 +1,15 @@
 const express = require('express');
-// const updateDetails = require('./utils/updateDetails');
-const NoticeRouter = require('./routes/notice')
-const CalenderRouter = require('./routes/calender')
-const LatestNewsRouter = require('./routes/latestNews')
-const ResearchNewsRouter = require('./routes/researchNews')
-const NavBarRouter = require('./routes/navbar')
+
+const navBarRouter = require('./routes/navbar')
+const newsRouter = require('./routes/news')
+const latestEvents = require('./routes/latestEvent')
 const administrationRouter = require('./routes/administration')
-const campusLifeRouter = require('./routes/campusLife')
+const noticeRouter = require('./routes/notice')
+const rankingRouter = require('./routes/ranking')
+const reasearchHighlights = require('./routes/researchHighlights')
+const photoGalleryRouter = require('./routes/photoGallery')
+const footerRouter = require('./routes/footer')
+
 //----------------------------------->
 
 //initialize app
@@ -14,16 +17,22 @@ const app = express();
 
 //middleware
 app.use(express.json());
-// app.all('*', updateDetails);
 
 //routes
-app.use("/notice", NoticeRouter);
-app.use("/calender", CalenderRouter);
-app.use("/latestNews", LatestNewsRouter);
-app.use("/researchNews", ResearchNewsRouter);
-app.use("/navbar", NavBarRouter);
+app.use("/navbar", navBarRouter);
+app.use("/news", newsRouter);
+app.use("/latestEvent", latestEvents);
 app.use("/adminisration", administrationRouter);
-app.use("/campusLife", campusLifeRouter);
+app.use("/notice", noticeRouter);
+app.use("/ranking", rankingRouter);
+app.use("/researchHighlights", reasearchHighlights);
+app.use("/photoGallery", photoGalleryRouter);
+app.use("/footer", footerRouter);
+
 
 //Export----------------------------->
 module.exports = app;
+
+//testimonials
+//publications
+//clubs and societies

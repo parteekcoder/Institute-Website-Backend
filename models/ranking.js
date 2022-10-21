@@ -2,26 +2,23 @@ const mongoose = require('mongoose');
 //----------------------------------->
 
 //Schema---------------------------->
-const cellSchema = new mongoose.Schema({
-    cell:{type: Object, required: true},
+const RankingSchema = new mongoose.Schema({
+    ranking:{type: Object},
     show:{type: Boolean, default: true},
 },{
     timestamps: true,
 });
 
-cellSchema.virtuals('id').get(function(){
-    return this._id.toHexString();
-});  
 
-cellSchema.set('toJSON',{
+RankingSchema.set('toJSON',{
     virtuals: true,
 });
 
 //Model---------------------------->
-const Model = mongoose.model('cell', cellSchema);
+const Model = mongoose.model('Ranking', RankingSchema);
 
 
 //Export----------------------------->
 module.exports = Model;
 
-// object: {'Title of the cell section':value,'cell Content':value}.
+// object: {'Name of the ranking authority':value,'Ranking Value':value}.

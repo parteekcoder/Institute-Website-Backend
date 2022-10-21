@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 //Schema---------------------------->
 const Schema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
-    desc: { type: String, required: true },
+    title: { type: String, },
+    desc: { type: String, },
     SourceOfInfo: {
       type: Object,
       default: {

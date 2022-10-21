@@ -13,20 +13,15 @@ exports.addRanking = async (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
-exports.showRanking = async (req, res) => {
-  Ranking.find({ show: true })
-    .then((data) => res.status(200).send(data))
-    .catch((err) => res.status(400).json("Error: " + err));
-};
 
 exports.showRankingbyId = async (req, res) => {
-  Ranking.findById(req.body.id)
+  Ranking.findById(req.params.id)
     .then((data) => res.status(200).send(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
 exports.updateRanking = async (req, res) => {
-  Ranking.findByIdAndUpdate(req.body.id, req.body)
+  Ranking.findByIdAndUpdate(req, req.body)
     .then(() => {
       res.status(200).send("Ranking updated successfully");
     })
@@ -34,7 +29,7 @@ exports.updateRanking = async (req, res) => {
 };
 
 exports.deleteRanking = async (req, res) => {
-  Ranking.findByIdAndUpdate(req.body.id, { $set: { show: false } })
+  Ranking.findByIdAndUpdate(req, { $set: { show: false } })
     .then(() => {
       res.status(200).send("Ranking deleted successfully");
     })

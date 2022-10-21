@@ -3,18 +3,11 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    calenderTitle: { type: String, required: true },
-    calenderText: { type: String, required: true },
-    calenderCategory: { type: String, required: true },
-    date: { type: Date, required: true },
-    uploadDate: {
-        type: Date,
-        default: Date.now()
-    },
-    updateDate: {
-        type: Date,
-        default: Date.now()
-    },
+    title: { type: String,  },
+    text: { type: String,  },
+    category: { type: String,  },
+    date: { type: Date,  },
+
     SourceOfInfo: {
         type: Object,
         default: {
@@ -29,7 +22,7 @@ const Schema = new mongoose.Schema({
 });
 
 //Model---------------------------->
-const Model = mongoose.model('Calender', Schema);
+const Model = mongoose.model('CampusLife', Schema);
 
 
 //Export----------------------------->
