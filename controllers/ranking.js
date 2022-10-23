@@ -9,14 +9,19 @@ exports.addRanking = async (req, res) => {
 
   data
     .save()
-    .then(() => res.status(201).send("Ranking added successfully"))
+    .then(() => res.status(200).send("Ranking added successfully"))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+exports.showRanking = async (req, res) => {
+  Ranking.find({show:true})
+    .then((data) => res.status(200).json(data))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
 
 exports.showRankingbyId = async (req, res) => {
   Ranking.findById(req.params.id)
-    .then((data) => res.status(200).send(data))
+    .then((data) => res.status(200).json(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 

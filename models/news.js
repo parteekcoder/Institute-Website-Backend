@@ -6,7 +6,7 @@ const Schema = new mongoose.Schema(
   {
     title: { type: String, },
     desc: { type: String, },
-    SourceOfInfo: {
+    sourceOfInfo: {
       type: Object,
       default: {
         name: null,

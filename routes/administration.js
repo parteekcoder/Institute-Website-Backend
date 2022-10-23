@@ -5,9 +5,8 @@ const administrationController = require('../controllers/administration');
 //Router
 const Router = express.Router();
 
-Router.route('/add').post(administrationController.addAdministration);
-Router.route('/get').get(administrationController.getAdministration);
-Router.route('/update/:_id').post(administrationController.updateAdministration);
+Router.route('/').post(administrationController.addAdministration).get(administrationController.all);
+Router.route('/:id').patch(administrationController.updateAdministration).get(administrationController.getAdministration).post(administrationController.deleteAdministration);
 
 
 //Export----------------------------->

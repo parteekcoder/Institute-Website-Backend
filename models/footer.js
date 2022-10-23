@@ -3,11 +3,19 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    title: {
-        type: String,
+    contact: {
+        type: Object,
+        default: {
+            email: '',
+            phone:[]
+        }
     },
     links: {
-        type: String,
+        type: Object,
+    },
+    show:{
+        type: Boolean,
+        default: true
     }
 }, {
     timestamps: true,
@@ -15,7 +23,9 @@ const Schema = new mongoose.Schema({
 
 
 //Model---------------------------->
-const Model = mongoose.model('quickLinks', Schema);
+const Model = mongoose.model('Footer', Schema);
 
 //Export----------------------------->
 module.exports = Model;
+
+// Proceed in sme maner as footer.

@@ -5,7 +5,9 @@ const rankingController = require('../controllers/ranking');
 //Router
 const Router = express.Router();
 
-Router.route('/').post(rankingController.addRanking).get(rankingController.showAllRanking);
+Router.route('/').post(rankingController.addRanking).get(rankingController.showRanking);
+
+Router.route('/all').get(rankingController.showAllRanking);
 
 Router.route('/:id').post(rankingController.showRankingbyId).patch(rankingController.updateRanking).delete(rankingController.deleteRanking);
 

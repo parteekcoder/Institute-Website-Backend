@@ -22,3 +22,4 @@ const Model = mongoose.model('Ranking', RankingSchema);
 module.exports = Model;
 
 // object: {'Name of the ranking authority':value,'Ranking Value':value}.
+// proceed same s about us

@@ -3,11 +3,10 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    LatestEventTitle: { type: String,  },
-    LatestEventText: { type: String,  },
-    LatestEventCategory: { type: String,  },
-    date: { type: Date,  },
-    SourceOfInfo: {
+    title: { type: String,  },
+    desc: { type: String,  },
+    image: { type: String,  },
+    sourceOfInfo: {
         type: Object,
         default: {
             name: null,
@@ -15,7 +14,8 @@ const Schema = new mongoose.Schema({
             designation: null,
             department: null
         }
-    }
+    },
+    show: { type: Boolean, default: true },
 }, {
     timestamps: true,
 });

@@ -9,6 +9,7 @@ const rankingRouter = require('./routes/ranking')
 const reasearchHighlights = require('./routes/researchHighlights')
 const photoGalleryRouter = require('./routes/photoGallery')
 const footerRouter = require('./routes/footer')
+const aboutRouter = require('./routes/about')
 
 //----------------------------------->
 
@@ -28,6 +29,7 @@ app.use("/ranking", rankingRouter);
 app.use("/researchHighlights", reasearchHighlights);
 app.use("/photoGallery", photoGalleryRouter);
 app.use("/footer", footerRouter);
+app.use("/about", aboutRouter);
 
 
 //Export----------------------------->
