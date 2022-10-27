@@ -3,13 +3,6 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    contact: {
-        type: Object,
-        default: {
-            email: '',
-            phone:[]
-        }
-    },
     links: {
         type: Object,
     },

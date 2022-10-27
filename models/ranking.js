@@ -10,9 +10,6 @@ const RankingSchema = new mongoose.Schema({
 });
 
 
-RankingSchema.set('toJSON',{
-    virtuals: true,
-});
 
 //Model---------------------------->
 const Model = mongoose.model('Ranking', RankingSchema);

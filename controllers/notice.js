@@ -3,17 +3,9 @@ const Notice = require('./../models/notice');
 
 //----------------------------------------------------------------------->
 exports.addNotice = async (req, res) => {
-    const noticeTitle = req.body.noticeTitle;
-    const noticeText = req.body.noticeText;
-    const noticeCategory = req.body.noticeCategory;
-    const date = Date.parse(req.body.date);
+    
 
-    const notice = new Notice({
-        noticeTitle,
-        noticeText,
-        noticeCategory,
-        date
-    });
+    const notice = new Notice(req.body);
 
     notice.save()
         .then((notice) => res.status(201).json(notice))
@@ -37,18 +29,18 @@ exports.getNoticeFromCategory = async (req, res) => {
 
 //----------------------------------------------------------------------->
 exports.updateNotice = async (req, res) => {
-    const _id = req.params._id;
+    const _id = req.params.id;
     const noticeTitle = req.body.noticeTitle;
     const noticeText = req.body.noticeText;
     const noticeCategory = req.body.noticeCategory;
-    const date = Date.parse(req.body.date);
+    
 
-    Notice.findByIdAndUpdate(_id, {
+    Notice.findByIdAndUpdate(id, {
         $set: {
             noticeTitle: noticeTitle,
             noticeText: noticeText,
             noticeCategory: noticeCategory,
-            date: date,
+       
         }
     }, { useFindAndModify: false })
         .then(() => res.status(201).json('Notice Updated Successfully!'))
