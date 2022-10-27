@@ -6,7 +6,9 @@ const footer = require('../controllers/footer');
 const Router = express.Router();
 
 Router.route('/').post(footer.addFooter).get(footer.getFooter);
-Router.route('/all').get(footer.getFooterFromcategory);
+
+Router.route('/all').get(footer.getFooterAll);
+
 Router.route('/:_id').patch(footer.updateFooter).post(footer.deleteFooter).get(footer.getFooterById);
 
 

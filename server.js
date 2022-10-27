@@ -4,7 +4,7 @@ const app = require('./app');
 //----------------------------------->
 
 //configuration
-dotenv.config({ path: './config.env' }); 
+dotenv.config({ path: './.env' }); 
 
 //connection to database------------------------------------------->
 
