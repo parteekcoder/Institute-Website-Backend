@@ -1,4 +1,4 @@
-const Ranking = require("../models/Ranking");
+const Ranking = require("../models/ranking");
 //----------------------------------->
 
 //----------------------------------------------------------------------->
