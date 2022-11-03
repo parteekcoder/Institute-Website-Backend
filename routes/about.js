@@ -9,7 +9,7 @@ Router.route('/').post(about.addAbout).get(about.getAbout);
 
 Router.route('/:id').get(about.getAboutbyId).patch(about.updateAbout).post(about.deleteAbout);
 
-Router.route('/all').get(about.getAllAbout);
+Router.route('/get/all').get(about.getAllAbout);
 
 
 //Export----------------------------->

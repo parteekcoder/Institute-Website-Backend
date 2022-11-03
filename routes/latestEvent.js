@@ -7,7 +7,7 @@ const Router = express.Router();
 
 Router.route('/').post(latestEventController.addLatestEvent).get(latestEventController.getLatestEvent);
 
-Router.route('/all').get(latestEventController.getAllLatestEvent);
+Router.route('/get/all').get(latestEventController.getAllLatestEvent);
 
 Router.route('/:_id').patch(latestEventController.updateLatestEvent).post(latestEventController.deleteLatestEvent).get(latestEventController.getLatestEventById);
 

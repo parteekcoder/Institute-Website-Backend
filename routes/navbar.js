@@ -1,5 +1,5 @@
 const express = require("express");
-const navbarController = require("../controllers/Navbar");
+const navbarController = require("../controllers/navbar");
 //----------------------------------->
 
 //Router

@@ -7,7 +7,7 @@ const Router = express.Router();
 
 Router.route('/').get(latestNewsController.getNews).post(latestNewsController.addNews);
 
-Router.route('/all').get(latestNewsController.getAllNews);
+Router.route('/get/all').get(latestNewsController.getAllNews);
 
 Router.route('/:id').get(latestNewsController.getNewsbyId).patch(latestNewsController.updateNews).post(latestNewsController.deleteNews);
 

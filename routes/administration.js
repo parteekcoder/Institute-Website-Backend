@@ -7,7 +7,7 @@ const Router = express.Router();
 
 Router.route('/').post(administrationController.addAdministration).get(administrationController.getAdministration);
 
-Router.route('/all').get(administrationController.getAdministrationall);
+Router.route('/get/all').get(administrationController.getAdministrationall);
 
 Router.route('/:id').patch(administrationController.updateAdministration).get(administrationController.getAdministration).post(administrationController.deleteAdministration);
 

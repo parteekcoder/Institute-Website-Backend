@@ -9,7 +9,7 @@ Router.route("/")
   .post(researchHighlights.addResearchHighlights)
   .get(researchHighlights.showResearchHighlights);
 
-Router.route("/all").get(researchHighlights.showAllResearchHighlights);
+Router.route("/get/all").get(researchHighlights.showAllResearchHighlights);
   
 Router.route("/:id")
   .get(researchHighlights.showResearchHighlightsbyId)
