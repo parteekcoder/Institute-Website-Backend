@@ -4,7 +4,7 @@ const LatestNews=require('../models/news');
 //----------------------------------------------------------------------->
 exports.addNews = async (req, res) => {
     
-    const latestNews = new Latestnews({
+    const latestNews = new LatestNews({
         title:req.body.title,
         desc:req.body.desc,
         sourceOfInfo:req.body.sourceOfInfo,
