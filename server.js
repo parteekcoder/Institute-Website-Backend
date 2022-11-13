@@ -1,14 +1,16 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const app = require('./app');
+
 //----------------------------------->
 
 //configuration
+
 dotenv.config({ path: './.env' }); 
 
 //connection to database------------------------------------------->
 
-mongoose.connect(process.env.URI, {
+mongoose.connect('mongodb://localhost:27017/test2', {
     useNewUrlParser: true
 }).then(() => {
     console.log("connection to database eshtablished");

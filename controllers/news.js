@@ -22,12 +22,17 @@ exports.getNews = async (req, res) => {
 }
 
 exports.getNewsbyId = async (req, res) => {
+
     LatestNews.findById(req.params.id).
     then(news => res.status(200).json(news)).
     catch(err => res.status(400).json('Error: ' + err));
 }
 
 exports.updateNews = async (req, res) => {
+    console.log(req.body);
+
+    console.log(req.params.id);
+    
     LatestNews.findByIdAndUpdate(req.params.id,{
         title:req.body.title,
         desc:req.body.desc,

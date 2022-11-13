@@ -1,4 +1,5 @@
 const express = require('express');
+const cors=require('cors');
 
 const navBarRouter = require('./routes/navbar')
 const newsRouter = require('./routes/news')
@@ -10,7 +11,7 @@ const reasearchHighlights = require('./routes/researchHighlights')
 const photoGalleryRouter = require('./routes/photoGallery')
 const footerRouter = require('./routes/footer')
 const aboutRouter = require('./routes/about')
-
+const bodyParser=require('body-parser');
 //----------------------------------->
 
 //initialize app
@@ -18,6 +19,9 @@ const app = express();
 
 //middleware
 app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 //routes
 app.use("/navbar", navBarRouter);

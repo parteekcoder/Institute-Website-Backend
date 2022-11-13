@@ -6,9 +6,10 @@ const noticeController = require('../controllers/notice');
 const Router = express.Router();
 
 Router.route('/').post(noticeController.addNotice).get(noticeController.getNotice);
-Router.route('/:category').get(noticeController.getNoticeFromCategory);
-Router.route('/update/:_id').post(noticeController.updateNotice);
-Router.route('/delete/:_id').delete(noticeController.deleteNotice);
+
+Router.route('/all').get(noticeController.showallNotice);
+
+Router.route('/:id').get(noticeController.getNoticeById).put(noticeController.updateNotice).post(noticeController.deleteNotice);
 
 
 

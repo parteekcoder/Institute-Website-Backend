@@ -33,9 +33,7 @@ const obj = {
     "CONSULTANCY @NITJ",
     "UPCOMING EVENTS",
   ],
-  Alumni: [
-
-  ],
+  Alumni: [],
   LifeatNITJ: [
     "CLUB & SOCITIES",
     "SCHOLARSHIPS",
@@ -43,33 +41,31 @@ const obj = {
     "GOVERNING BODIES",
     "CELLS",
     "COMMITIES",
-  ]
+  ],
 };
 exports.show = async (req, res) => {
   Navbar.findOne({}, (err, data) => {
     if (err) {
-      res.Status(500).send("Something wrong happend");
+      res.status(500).send("Something wrong happend");
     } else {
       res.status(200).send(data);
-
-      res.send(data);
     }
   });
 };
 
 //----------------------------------------------------------------------->
 exports.update = async (req, res) => {
+  console.log(req.body);
+
   Navbar.findOne({}, (err, data) => {
     if (err) {
       res.Status(500).send("Something wrong happend");
     } else {
-      const type = req.body.type;
-      const subtype = req.body.subtype;
+      const type = req.body.menu;
+      const subtype = req.body.submenu;
       const link = req.body.link;
       const name = req.body.name;
       const id = uuid.v4();
-
-      console.log(type, subtype, link, name);
 
       let idx = obj[`${type}`].indexOf(`${subtype}`);
       data[`${type}`][idx].push({ name, link, id });
@@ -81,30 +77,36 @@ exports.update = async (req, res) => {
           res.send(data);
         }
       });
-
     }
   });
 };
 
 //----------------------------------------------------------------------->
 exports.delete = async (req, res) => {
-  Navbar.findOne({}, (err, data) => {
+  Navbar.findOne({}, async (err, data) => {
     if (err) {
       res.Status(500).send("Something wrong happend");
     } else {
-      const type = req.body.type;
-      const subtype = req.body.subtype;
+      const type = req.body.menu;
+      const subtype = req.body.submenu;
       const id = req.body.id;
 
-      let idx = obj[`${type}`].indexOf(`${subtype}`);
-      let arr = data[`${type}`][idx];
+      let data = await Navbar.findOne({});
+      let ind=0;
 
-      for (let i = 2; i < arr.length; i++) {
-        if (arr[i].id === id) {
-          arr.splice(i, 1);
-          break;
+      for(let i=0;i<data[`${type}`].length;i++){
+        if(data[`${type}`][i][0]===subtype){
+          ind=i;
         }
       }
+
+      for(let i=2;i<data[`${type}`][ind].length;i++){
+        if(data[`${type}`][ind][i].id===id){
+          data[`${type}`][ind].splice(i,1);
+        }
+      }
+
+      console.log(data);
 
       Navbar.findOneAndUpdate({}, { $set: data }, (err, data) => {
         if (err) {
@@ -150,17 +152,14 @@ exports.create = async (req, res) => {
     ],
     Alumni: [],
     LifeatNITJ: [
-      "CLUB & SOCITIES",
-      "SCHOLARSHIPS",
-      "LEADERSHIP",
-      "GOVERNING BODIES",
-      "CELLS",
-      "COMMITIES",
-    ]
+      ["CLUB & SOCITIES", "FALSE"],
+      ["SCHOLARSHIPS", "FALSE"],
+      ["LEADERSHIP", "FALSE"],
+      ["GOVERNING BODIES", "FALSE"],
+      ["CELLS", "FALSE"],
+      ["COMMITIES", "FALSE"],
+    ],
   });
-  navbar.save();
+  await navbar.save();
   res.sendStatus(200);
 };
-
-
-
