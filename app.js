@@ -1,5 +1,4 @@
 const express = require('express');
-const cors=require('cors');
 
 const navBarRouter = require('./routes/navbar')
 const newsRouter = require('./routes/news')
@@ -19,9 +18,9 @@ const app = express();
 
 //middleware
 app.use(express.json());
-app.use(cors());
+bodyParser.urlencoded({extended:true});
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+
 
 //routes
 app.use("/navbar", navBarRouter);
@@ -34,7 +33,6 @@ app.use("/researchHighlights", reasearchHighlights);
 app.use("/photoGallery", photoGalleryRouter);
 app.use("/footer", footerRouter);
 app.use("/about", aboutRouter);
-
 
 //Export----------------------------->
 module.exports = app;
