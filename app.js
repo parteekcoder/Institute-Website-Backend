@@ -1,4 +1,5 @@
 const express = require('express');
+const cors=require('cors');
 
 const navBarRouter = require('./routes/navbar')
 const newsRouter = require('./routes/news')
@@ -17,6 +18,7 @@ const bodyParser=require('body-parser');
 const app = express();
 
 //middleware
+app.use(cors());
 app.use(express.json());
 bodyParser.urlencoded({extended:true});
 app.use(bodyParser.json());
