@@ -10,7 +10,7 @@ dotenv.config({ path: './.env' });
 
 //connection to database------------------------------------------->
 
-mongoose.connect('mongodb://localhost:27017/test2', {
+mongoose.connect(process.env.URI, {
     useNewUrlParser: true
 }).then(() => {
     console.log("connection to database eshtablished");
