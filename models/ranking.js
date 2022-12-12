@@ -1,19 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 //----------------------------------->
 
 //Schema---------------------------->
-const RankingSchema = new mongoose.Schema({
-    ranking:{type: Object},
-    show:{type: Boolean, default: true},
-},{
-    timestamps: true,
-});
-
-
+const RankingSchema = new mongoose.Schema(
+    {
+        Ranking: { type: Object },
+        show: { type: Boolean, default: true },
+    },
+    {
+        timestamps: true,
+    }
+);
 
 //Model---------------------------->
-const Model = mongoose.model('Ranking', RankingSchema);
-
+const Model = mongoose.model("Ranking", RankingSchema);
 
 //Export----------------------------->
 module.exports = Model;

@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
 app.use("/latestEvent", latestEvents);
-app.use("/adminisration", administrationRouter);
+app.use("/administration", administrationRouter);
 app.use("/notice", noticeRouter);
 app.use("/ranking", rankingRouter);
 app.use("/researchHighlights", reasearchHighlights);

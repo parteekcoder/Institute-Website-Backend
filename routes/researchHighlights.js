@@ -5,16 +5,14 @@ const researchHighlights = require("../controllers/researchHighlights");
 //Router
 const Router = express.Router();
 
-Router.route("/")
-  .post(researchHighlights.addResearchHighlights)
-  .get(researchHighlights.showResearchHighlights);
+Router.route("/").post(researchHighlights.addResearchHighlights).get(researchHighlights.showResearchHighlights);
 
 Router.route("/get/all").get(researchHighlights.showAllResearchHighlights);
-  
+
 Router.route("/:id")
-  .get(researchHighlights.showResearchHighlightsbyId)
-  .patch(researchHighlights.updateResearchHighlights)
-  .delete(researchHighlights.deleteResearchHighlights);
+    .get(researchHighlights.showResearchHighlightsbyId)
+    .patch(researchHighlights.updateResearchHighlights)
+    .post(researchHighlights.deleteResearchHighlights);
 
 //Export----------------------------->
 module.exports = Router;
