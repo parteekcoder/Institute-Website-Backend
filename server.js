@@ -4,6 +4,12 @@ const app = require("./app");
 
 //----------------------------------->
 
+process.on("uncoughtException", (err) => {
+    console.log("uncought exception occured");
+    console.log(err.name, err.message);
+    process.exit(1);
+});
+
 //configuration
 
 dotenv.config({ path: "./.env" });
@@ -25,4 +31,12 @@ mongoose
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
+});
+
+process.on("unhandledRejection", (err) => {
+    console.log("unhandleed rejection occured");
+    console.log(err.name, err.message);
+    server.close(() => {
+        process.exit(1);
+    });
 });
