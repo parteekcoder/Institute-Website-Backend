@@ -11,6 +11,9 @@ const reasearchHighlights = require("./routes/researchHighlights");
 const photoGalleryRouter = require("./routes/photoGallery");
 const footerRouter = require("./routes/footer");
 const aboutRouter = require("./routes/about");
+const testimonialRouter = require("./routes/testimonial");
+const clubRouter = require("./routes/club");
+
 const bodyParser = require("body-parser");
 //----------------------------------->
 
@@ -38,6 +41,8 @@ app.use("/researchHighlights", reasearchHighlights);
 app.use("/photoGallery", photoGalleryRouter);
 app.use("/footer", footerRouter);
 app.use("/about", aboutRouter);
+app.use("/testimonial", testimonialRouter);
+app.use("/club", clubRouter);
 
 //Export----------------------------->
 module.exports = app;
