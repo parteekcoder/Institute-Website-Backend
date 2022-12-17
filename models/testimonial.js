@@ -8,6 +8,7 @@ const Schema = new mongoose.Schema(
         messageText: { type: String },
         designation: { type: String },
         show: { type: Boolean, default: true },
+        image: { type: String },
     },
     {
         timestamps: true,
