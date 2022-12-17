@@ -22,8 +22,8 @@ exports.getTestimonialbyId = async (req, res) => {
 
 exports.updateTestimonial = async (req, res) => {
     Testimonial.findByIdAndUpdate(req.params.id, req.body)
-        .then(() => {
-            res.status(200).send("Testimonial updated successfully");
+        .then((data) => {
+            res.status(200).json(data);
         })
         .catch((err) => res.status(400).json("Error: " + err));
 };

@@ -24,31 +24,19 @@ exports.addResearchHighlights = async (req, res) => {
 exports.showResearchHighlightsbyId = async (req, res) => {
     ResearchHighlights.find({ id: req.params.id })
         .then((data) => res.status(200).send(data))
-        .catch((err) => res.status(400).send("Something Wrong Happened"));
+        .catch((err) => res.status(400).send(err));
 };
 
 exports.updateResearchHighlights = async (req, res) => {
-    const title = req.body.title;
-    const desc = req.body.desc;
-    const sourceOfInformation = req.body.sourceOfInformation;
-    const type = req.body.type;
-    ResearchHighlights.findOneAndUpdate(
-        { id: req.params.id },
-        {
-            title,
-            desc,
-            sourceOfInformation,
-            type,
-        }
-    )
+    ResearchHighlights.findByIdAndUpdate(req.params.id, req.body)
         .then((data) => res.status(200).send(data))
-        .catch((err) => res.status(400).send("Something Wrong Happened"));
+        .catch((err) => res.status(400).send(err));
 };
 
 exports.deleteResearchHighlights = async (req, res) => {
-    ResearchHighlights.findOneAndUpdate({ id: req.params.id }, { $set: { show: false } })
+    ResearchHighlights.findByIdAndUpdate(req.params.id, { $set: { show: false } })
         .then((data) => res.status(200).send(data))
-        .catch((err) => res.status(400).send("Something Wrong Happened"));
+        .catch((err) => res.status(400).send(err));
 };
 
 exports.showAllResearchHighlights = async (req, res) => {
