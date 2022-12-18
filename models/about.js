@@ -4,7 +4,14 @@ const mongoose = require("mongoose");
 //Schema---------------------------->
 const Schema = new mongoose.Schema(
     {
-        About: { type: Object },
+        heading: {
+            type: String,
+            default: "",
+        },
+        content: {
+            type: String,
+            default: "",
+        },
         show: { type: Boolean, default: true },
     },
     {

@@ -3,48 +3,64 @@ const mongoose = require("mongoose");
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema(
-  {
-    messageText: {
-      type: String,
-      default: "",
-    },
-    name: {
-      type: String,
-      default: "",
-    },
-    designation: {
-      type: String,
-      default: "",
-    },
-    image: {
-      type: String,
-      default: "",
-    },
+    {
+        messageText: {
+            type: String,
+            default: "",
+        },
+        name: {
+            type: String,
+            default: "",
+        },
+        designation: {
+            type: String,
+            default: "",
+        },
+        department: {
+            type: String,
+            default: "",
+        },
+        profileLink: {
+            type: String,
+            default: "",
+        },
+        qualification: {
+            type: Object,
+            default: {
+                degree: "",
+                university: "",
+                year: "",
+            },
+        },
+        image: {
+            type: String,
+            default: "",
+        },
 
-    sourceOfInfo: {
-      type: Object,
-      default: {
-        name: null,
-        email: null,
-        designation: null,
-        department: null,
-      },
+        sourceOfInfo: {
+            type: Object,
+            default: {
+                name: null,
+                email: null,
+                designation: null,
+                department: null,
+            },
+        },
+        contact: {
+            type: Object,
+            default: {
+                email: null,
+                telNo: null,
+                EPABX: null,
+                Extn: null,
+                fax: null,
+            },
+        },
+        show: { type: Boolean, default: true },
     },
-    contact: {
-      type: Object,
-      default: {
-        email: null,
-        telNo: null,
-        EPABX: null,
-        Extn: null,
-        fax: null,
-      },
-    },
-    show: { type: Boolean, default: true },
-  },
-  {
-    timestamps: true,
-  }
+    {
+        timestamps: true,
+    }
 );
 
 //Model---------------------------->
