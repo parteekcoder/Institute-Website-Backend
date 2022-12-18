@@ -1,9 +1,7 @@
 const About = require("../models/about");
 
 exports.addAbout = async (req, res) => {
-    const data = new About({
-        About: req.body.About,
-    });
+    const data = new About(req.body);
 
     data.save()
         .then(() => res.status(201).json(data))
