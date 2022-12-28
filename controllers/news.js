@@ -16,22 +16,25 @@ exports.addNews = async (req, res) => {
 };
 
 exports.getNews = async (req, res) => {
-    if(req.query.id!==undefined){
-         
+    if (req.query.id !== undefined) {
         LatestNews.findById(req.query.id)
-        .then((news) => res.status(200).json(news))
-        .catch((err) => res.status(400).json("Error: " + err));
-    }
-    else{
+            .then((news) => res.status(200).json(news))
+            .catch((err) => res.status(400).json("Error: " + err));
+    } else {
+        if (req.query.title) {
+            const title = req.query.title.split("-").join(" ");
+            console.log(title);
+            return LatestNews.find({ title: title })
+                .then((news) => res.status(200).json(news))
+                .catch((err) => res.status(400).json("Error: " + err));
+        }
         LatestNews.find({ show: true })
-        .then((news) => res.status(200).json(news))
-        .catch((err) => res.status(400).json("Error: " + err));
+            .then((news) => res.status(200).json(news))
+            .catch((err) => res.status(400).json("Error: " + err));
     }
-    
 };
 
 exports.getNewsbyId = async (req, res) => {
-    
     LatestNews.findById(req.params.id)
         .then((news) => res.status(200).json(news))
         .catch((err) => res.status(400).json("Error: " + err));
