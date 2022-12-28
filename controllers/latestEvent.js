@@ -18,17 +18,22 @@ exports.addLatestEvent = async (req, res) => {
 
 //----------------------------------------------------------------------->
 exports.getLatestEvent = async (req, res) => {
-    if(req.query.id!==undefined){
-         LatestEvent.find({ _id: req.query.id })
-        .then((cal) => res.status(200).json(cal))
-        .catch((err) => res.status(404).json("Error: " + err));
-    }
-    else{
+    if (req.query.id !== undefined) {
+        LatestEvent.find({ _id: req.query.id })
+            .then((cal) => res.status(200).json(cal))
+            .catch((err) => res.status(404).json("Error: " + err));
+    } else {
+        if (req.query.title) {
+            const title = req.query.title.split("-").join(" ");
+            console.log(title);
+            return LatestEvent.find({ title: title })
+                .then((news) => res.status(200).json(news))
+                .catch((err) => res.status(400).json("Error: " + err));
+        }
         LatestEvent.find({ show: true })
-        .then((cal) => res.status(200).json(cal))
-        .catch((err) => res.status(404).json("Error: " + err));
+            .then((cal) => res.status(200).json(cal))
+            .catch((err) => res.status(404).json("Error: " + err));
     }
-    
 };
 
 exports.getLatestEventById = async (req, res) => {
