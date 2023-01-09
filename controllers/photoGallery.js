@@ -5,6 +5,7 @@ const PhotoGallery = require("../models/photoGallery");
 exports.add = async (req, res) => {
     const photoGallery = new PhotoGallery({
         image: req.body.image,
+        sourceOfInfo: req.body.sourceOfInfo,
     });
 
     photoGallery

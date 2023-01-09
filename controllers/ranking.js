@@ -5,6 +5,7 @@ const Ranking = require("../models/ranking");
 exports.addRanking = async (req, res) => {
     const data = new Ranking({
         Ranking: req.body.Ranking,
+        sourceOfInfo: req.body.sourceOfInfo,
     });
 
     data.save()

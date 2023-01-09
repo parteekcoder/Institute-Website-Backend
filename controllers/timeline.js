@@ -5,6 +5,7 @@ const Timeline = require("../models/timeline");
 exports.addTimeline = async (req, res) => {
     const data = new Timeline({
         Timeline: req.body.Timeline,
+        sourceOfInfo: req.body.sourceOfInfo,
     });
 
     data.save()
