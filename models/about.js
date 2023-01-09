@@ -12,6 +12,15 @@ const Schema = new mongoose.Schema(
             type: String,
             default: "",
         },
+        sourceOfInfo: {
+            type: Object,
+            default: {
+              name: null,
+              email: null,
+              designation: null,
+              department: null,
+            }
+          },
         show: { type: Boolean, default: true },
     },
     {

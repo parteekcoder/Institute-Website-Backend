@@ -7,7 +7,15 @@ const ResearchSchema = new Schema(
     title: { type: String, },
     desc: { type: String, },
     image: { type: String },
-    sourceOfInformation: { type: Object, default: {} },
+    sourceOfInfo: {
+      type: Object,
+      default: {
+        name: null,
+        email: null,
+        designation: null,
+        department: null,
+      }
+    },
     type: { type: String },
     show: { type: Boolean, default: true },
   },

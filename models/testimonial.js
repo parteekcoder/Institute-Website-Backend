@@ -9,6 +9,15 @@ const Schema = new mongoose.Schema(
         designation: { type: String },
         show: { type: Boolean, default: true },
         image: { type: String },
+        sourceOfInfo: {
+            type: Object,
+            default: {
+              name: null,
+              email: null,
+              designation: null,
+              department: null,
+            }
+          },
     },
     {
         timestamps: true,

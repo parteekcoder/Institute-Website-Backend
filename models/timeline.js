@@ -6,6 +6,15 @@ const TimelineSchema = new mongoose.Schema(
     {
         Timeline: { type: Array },
         show: { type: Boolean, default: true },
+        sourceOfInfo: {
+            type: Object,
+            default: {
+              name: null,
+              email: null,
+              designation: null,
+              department: null,
+            }
+          },
     },
     {
         timestamps: true,
