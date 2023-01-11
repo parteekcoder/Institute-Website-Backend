@@ -17,8 +17,6 @@ const aboutRouter = require("./routes/about");
 const testimonialRouter = require("./routes/testimonial");
 const clubRouter = require("./routes/club");
 
-const accessController = require("./controllers/access");
-
 const bodyParser = require("body-parser");
 //----------------------------------->
 
@@ -34,8 +32,6 @@ app.use(
 app.use(express.json());
 bodyParser.urlencoded({ extended: true });
 app.use(bodyParser.json());
-
-app.all("*", accessController.protect);
 
 //routes
 app.use("/navbar", navBarRouter);
