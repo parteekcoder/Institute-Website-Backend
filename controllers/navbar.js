@@ -5,16 +5,7 @@ const uuid = require("uuid");
 //----------------------------------------------------------------------->
 const obj = {
     Administration: ["ABOUT US", "LEADERSHIP", "GOVERNING BODIES", "CELLS", "COMMITTEES"],
-    Acadmeics: [
-        "DEPARTMENTS",
-        "CENTERS",
-        "ACADEMIC SYSTEM",
-        "ACADEMIC SERVICES",
-        "ACADEMIC FACILITIES",
-        "PROGRAMMES OF STUDY",
-        "CONVOCATION",
-        "OTHER LINKS",
-    ],
+    Acadmeics: ["DEPARTMENTS", "CENTERS", "ACADEMIC SYSTEM", "ACADEMIC SERVICES", "ACADEMIC FACILITIES", "PROGRAMMES OF STUDY", "CONVOCATION", "OTHER LINKS"],
     Admissions: ["PROSPECTIVE STUDENTS", "ANTI RAGGING", "JOIN NITJ", "INSTITUTE PROSPECTS"],
     Research: ["Research @NITJ", "INCUBATION @NITJ", "CONSULTANCY @NITJ", "UPCOMING EVENTS"],
     Alumni: [],
@@ -97,46 +88,55 @@ exports.delete = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-    const navbar = new Navbar({
-        Administration: [
-            ["ABOUT US", false],
-            ["LEADERSHIP", false],
-            ["GOVERNING BODIES", false],
-            ["CELLS", false],
-            ["COMMITTEES", false],
-        ],
-        Acadmeics: [
-            ["DEPARTMENTS", false],
-            ["CENTERS", false],
-            ["ACADEMIC SYSTEM", false],
-            ["ACADEMIC SERVICES", false],
-            ["ACADEMIC FACILITIES", false],
-            ["PROGRAMMES OF STUDY", false],
-            ["CONVOCATION", false],
-            ["OTHER LINKS", false],
-        ],
-        Admissions: [
-            ["PROSPECTIVE STUDENTS", false],
-            ["ANTI RAGGING", false],
-            ["JOIN NITJ", false],
-            ["INSTITUTE PROSPECTS", false],
-        ],
-        Research: [
-            ["Research @NITJ", false],
-            ["INCUBATION @NITJ", false],
-            ["CONSULTANCY @NITJ", false],
-            ["UPCOMING EVENTS", false],
-        ],
-        Alumni: [],
-        LifeatNITJ: [
-            ["CLUB & SOCITIES", "FALSE"],
-            ["SCHOLARSHIPS", "FALSE"],
-            ["LEADERSHIP", "FALSE"],
-            ["GOVERNING BODIES", "FALSE"],
-            ["CELLS", "FALSE"],
-            ["COMMITIES", "FALSE"],
-        ],
+    //check if already exists
+    Navbar.findOne({}, async (err, data) => {
+        if (err) {
+            return res.status(500).send("Something wrong happend");
+        } else if (data) {
+            return res.status(200).send("Already exists");
+        } else {
+            const navbar = new Navbar({
+                Administration: [
+                    ["ABOUT US", false],
+                    ["LEADERSHIP", false],
+                    ["GOVERNING BODIES", false],
+                    ["CELLS", false],
+                    ["COMMITTEES", false],
+                ],
+                Acadmeics: [
+                    ["DEPARTMENTS", false],
+                    ["CENTERS", false],
+                    ["ACADEMIC SYSTEM", false],
+                    ["ACADEMIC SERVICES", false],
+                    ["ACADEMIC FACILITIES", false],
+                    ["PROGRAMMES OF STUDY", false],
+                    ["CONVOCATION", false],
+                    ["OTHER LINKS", false],
+                ],
+                Admissions: [
+                    ["PROSPECTIVE STUDENTS", false],
+                    ["ANTI RAGGING", false],
+                    ["JOIN NITJ", false],
+                    ["INSTITUTE PROSPECTS", false],
+                ],
+                Research: [
+                    ["Research @NITJ", false],
+                    ["INCUBATION @NITJ", false],
+                    ["CONSULTANCY @NITJ", false],
+                    ["UPCOMING EVENTS", false],
+                ],
+                Alumni: [],
+                LifeatNITJ: [
+                    ["CLUB & SOCITIES", false],
+                    ["SCHOLARSHIPS", false],
+                    ["LEADERSHIP", false],
+                    ["GOVERNING BODIES", false],
+                    ["CELLS", false],
+                    ["COMMITIES", false],
+                ],
+            });
+            await navbar.save();
+            res.status(200).send("Navbar created");
+        }
     });
-    await navbar.save();
-    res.status(200).send("Navbar created");
 };
