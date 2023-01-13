@@ -9,15 +9,18 @@ const Schema = new mongoose.Schema(
         type: { type: String },
         img: { type: String },
         show: { type: Boolean, default: true },
+        order: {
+            type: Number,
+        },
         sourceOfInfo: {
             type: Object,
             default: {
-              name: null,
-              email: null,
-              designation: null,
-              department: null,
-            }
-          },
+                name: null,
+                email: null,
+                designation: null,
+                department: null,
+            },
+        },
     },
     {
         timestamps: true,

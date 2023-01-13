@@ -10,6 +10,9 @@ const TenderSchema = new mongoose.Schema(
         fileLink: { type: String },
         imageLink: { type: String },
         show: { type: Boolean, default: true },
+        order:{
+          type: Number,
+      },
         sourceOfInfo: {
             type: Object,
             default: {

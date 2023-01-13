@@ -6,6 +6,9 @@ const Schema = new mongoose.Schema({
     title: { type: String,  },
     desc: { type: String,  },
     image: { type: String,  },
+    order:{
+        type: Number,
+    },
     sourceOfInfo: {
         type: Object,
         default: {

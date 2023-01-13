@@ -17,6 +17,9 @@ const Schema = new mongoose.Schema(
         image: { type: String },
         startDate: { type: Date },
         endDate: { type: Date },
+        order:{
+            type: Number,
+        },
         sourceOfInfo: {
             type: Object,
             default: {

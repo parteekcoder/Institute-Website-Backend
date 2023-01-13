@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
    image:{type:Object,required:true},
+   order:{
+    type: Number,
+},
    sourceOfInfo: {
     type: Object,
     default: {

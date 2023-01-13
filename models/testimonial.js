@@ -9,6 +9,9 @@ const Schema = new mongoose.Schema(
         designation: { type: String },
         show: { type: Boolean, default: true },
         image: { type: String },
+        order:{
+          type: Number,
+      },
         sourceOfInfo: {
             type: Object,
             default: {

@@ -57,6 +57,10 @@ const Schema = new mongoose.Schema(
             },
         },
         show: { type: Boolean, default: true },
+
+        order: {
+            type: Number,
+        },
     },
     {
         timestamps: true,

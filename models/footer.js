@@ -10,6 +10,9 @@ const Schema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    order:{
+        type: Number,
+    },
     sourceOfInfo: {
         type: Object,
         default: {

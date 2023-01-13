@@ -6,6 +6,9 @@ const PublicationSchema = new mongoose.Schema(
     {
         Publication: { type: Object },
         show: { type: Boolean, default: true },
+        order:{
+          type: Number,
+      },
         sourceOfInfo: {
             type: Object,
             default: {
