@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const compression = require("compression");
 
 const navBarRouter = require("./routes/navbar");
 const newsRouter = require("./routes/news");
@@ -18,6 +19,8 @@ const testimonialRouter = require("./routes/testimonial");
 const studentTeamRouter = require("./routes/studentTeam");
 const clubRouter = require("./routes/club");
 
+const searchRouter = require("./routes/search");
+
 const bodyParser = require("body-parser");
 //----------------------------------->
 
@@ -33,6 +36,8 @@ app.use(
 app.use(express.json());
 bodyParser.urlencoded({ extended: true });
 app.use(bodyParser.json());
+
+app.use(compression());
 
 //routes
 app.use("/navbar", navBarRouter);
@@ -51,6 +56,8 @@ app.use("/about", aboutRouter);
 app.use("/testimonial", testimonialRouter);
 app.use("/studentTeam", studentTeamRouter);
 app.use("/club", clubRouter);
+
+app.use("/search", searchRouter);
 
 //Export----------------------------->
 module.exports = app;
