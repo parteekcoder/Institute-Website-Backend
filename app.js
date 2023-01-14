@@ -18,6 +18,7 @@ const aboutRouter = require("./routes/about");
 const testimonialRouter = require("./routes/testimonial");
 const studentTeamRouter = require("./routes/studentTeam");
 const clubRouter = require("./routes/club");
+const upcomingEventRouter = require("./routes/upcomingEvent");
 
 const searchRouter = require("./routes/search");
 
@@ -56,6 +57,7 @@ app.use("/about", aboutRouter);
 app.use("/testimonial", testimonialRouter);
 app.use("/studentTeam", studentTeamRouter);
 app.use("/club", clubRouter);
+app.use("/upcomingEvent", upcomingEventRouter);
 
 app.use("/search", searchRouter);
 
