@@ -10,6 +10,9 @@ const ResearchSchema = new Schema(
     order:{
       type: Number,
   },
+  new:{
+    type: Boolean,
+},
     sourceOfInfo: {
       type: Object,
       default: {

@@ -11,6 +11,8 @@ const Schema = new mongoose.Schema(
         show: { type: Boolean, default: true },
         order: {
             type: Number,
+        },new:{
+            type: Boolean,
         },
         sourceOfInfo: {
             type: Object,

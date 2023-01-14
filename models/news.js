@@ -9,6 +9,9 @@ const Schema = new mongoose.Schema(
     order:{
       type: Number,
   },
+  new:{
+    type: Boolean,
+},
     sourceOfInfo: {
       type: Object,
       default: {

@@ -18,6 +18,9 @@ const Schema = new mongoose.Schema({
             department: null
         }
     },
+    new:{
+        type: Boolean,
+    },
     
     image: { type: String, }
 }, {
