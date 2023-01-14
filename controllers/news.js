@@ -17,7 +17,7 @@ exports.addNews = async (req, res) => {
 
 exports.getNews = async (req, res) => {
     if (req.query.id !== undefined) {
-        LatestNews.findById(req.query.id)
+        LatestNews.find({id:req.query.id})
             .then((news) => res.status(200).json(news))
             .catch((err) => res.status(400).json("Error: " + err));
     } else {
