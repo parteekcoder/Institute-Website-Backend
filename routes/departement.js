@@ -1,14 +1,14 @@
 const express = require('express');
-const { getByDeptAcadcord, updateAcadcord, deleteAcadcord, addAcadcord } = require('../controllers/Acadcord');
+const { getByDeptAcadcord, updateAcadcord, deleteAcadcord, addAcadcord } = require('../controllers/acadcord');
 const { getByDeptAchievement, addAchievement, updateAchievement, deleteAchievement } = require('../controllers/achievement');
 const { getByDeptActivity, addActivity, updateActivity, deleteActivity } = require('../controllers/activity');
-const { getByIdAlumni, addAlumni, updateAlumni, deleteAlumni, getByDeptAlumni } = require('../controllers/Alumni');
-const { getByIdFaculty, addFaculty, updateFaculty, deleteFaculty, getByDeptFaculty } = require('../controllers/Faculty');
+const { getByIdAlumni, addAlumni, updateAlumni, deleteAlumni, getByDeptAlumni } = require('../controllers/alumni');
+const { getByIdFaculty, addFaculty, updateFaculty, deleteFaculty, getByDeptFaculty } = require('../controllers/faculty');
 const { getByIdInfrastructure, addInfrastructure, updateInfrastructure, deleteInfrastructure, getByDeptInfrastructure } = require('../controllers/infrastructure');
 const { getByIdPhdScholar, addPhdScholar, updatePhdScholar, deletePhdScholar, getByDeptPhdScholar } = require('../controllers/phdScholar');
 const { getAllPlacement, getByIdPlacement, addPlacement, updatePlacement, deletePlacement, getByDeptPlacement } = require('../controllers/placement');
-const { getByIdStaff, addStaff, updateStaff, deleteStaff, getByDeptStaff } = require('../controllers/Staff');
-const { getByIdStudent, addStudent, updateStudent, deleteStudent, getByDeptStudent } = require('../controllers/Student');
+const { getByIdStaff, addStaff, updateStaff, deleteStaff, getByDeptStaff } = require('../controllers/staff');
+const { getByIdStudent, addStudent, updateStudent, deleteStudent, getByDeptStudent } = require('../controllers/student');
 
 
 const Router = express.Router();
