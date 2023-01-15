@@ -9,7 +9,7 @@ Router.route('/').post(administrationController.addAdministration).get(administr
 
 Router.route('/get/all').get(administrationController.getAdministrationall);
 
-Router.route('/:id').patch(administrationController.updateAdministration).get(administrationController.getAdministration).post(administrationController.deleteAdministration);
+Router.route('/:id').patch(administrationController.updateAdministration).post(administrationController.deleteAdministration);
 
 
 //Export----------------------------->

@@ -4,14 +4,16 @@ const mongoose = require("mongoose");
 //Schema---------------------------->
 const Schema = new mongoose.Schema(
   {
-    title: { type: String, },
-    desc: { type: String, },
-    order:{
+    title: { type: String, required: true },
+    desc: { type: String, default: "" },
+    order: {
       type: Number,
-  },
-  new:{
-    type: Boolean,
-},
+      default: 0,
+    },
+    new: {
+      type: Boolean,
+      default: true,
+    },
     sourceOfInfo: {
       type: Object,
       default: {
@@ -19,9 +21,9 @@ const Schema = new mongoose.Schema(
         email: null,
         designation: null,
         department: null,
-      }
+      },
     },
-    show:{type:Boolean,default:true}
+    show: { type: Boolean, default: true },
   },
   {
     timestamps: true,
@@ -29,7 +31,7 @@ const Schema = new mongoose.Schema(
 );
 
 //Model---------------------------->
-const Model = mongoose.model("LatestNews", Schema);
+const Model = mongoose.model("News", Schema);
 
 //Export----------------------------->
 module.exports = Model;

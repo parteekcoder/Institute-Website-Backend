@@ -10,7 +10,6 @@ Router.route("/").get(latestNewsController.getNews).post(latestNewsController.ad
 Router.route("/get/all").get(latestNewsController.getAllNews);
 
 Router.route("/:id")
-    .get(latestNewsController.getNewsbyId)
     .put(latestNewsController.updateNews)
     .post(latestNewsController.deleteNews);
 

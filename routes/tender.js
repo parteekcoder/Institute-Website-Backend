@@ -10,7 +10,6 @@ Router.route("/").post(tenderController.addTender).get(tenderController.showTend
 Router.route("/get/all").get(tenderController.showAllTender);
 
 Router.route("/:id")
-    .get(tenderController.showTenderbyId)
     .patch(tenderController.updateTender)
     .post(tenderController.deleteTender);
 

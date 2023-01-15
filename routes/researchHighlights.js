@@ -10,7 +10,6 @@ Router.route("/").post(researchHighlights.addResearchHighlights).get(researchHig
 Router.route("/get/all").get(researchHighlights.showAllResearchHighlights);
 
 Router.route("/:id")
-    .get(researchHighlights.showResearchHighlightsbyId)
     .patch(researchHighlights.updateResearchHighlights)
     .post(researchHighlights.deleteResearchHighlights);
 

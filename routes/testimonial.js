@@ -8,7 +8,6 @@ const Router = express.Router();
 Router.route("/").post(testimonial.addTestimonial).get(testimonial.getTestimonial);
 
 Router.route("/:id")
-    .get(testimonial.getTestimonialbyId)
     .patch(testimonial.updateTestimonial)
     .post(testimonial.deleteTestimonial);
 
