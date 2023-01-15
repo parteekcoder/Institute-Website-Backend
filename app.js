@@ -19,7 +19,7 @@ const testimonialRouter = require("./routes/testimonial");
 const studentTeamRouter = require("./routes/studentTeam");
 const clubRouter = require("./routes/club");
 const upcomingEventRouter = require("./routes/upcomingEvent");
-
+const departmentRouter=require('./routes/departement')
 const searchRouter = require("./routes/search");
 
 const bodyParser = require("body-parser");
@@ -60,7 +60,7 @@ app.use("/club", clubRouter);
 app.use("/upcomingEvent", upcomingEventRouter);
 
 app.use("/search", searchRouter);
-
+app.use("/dept",departmentRouter);
 //Export----------------------------->
 module.exports = app;
 
