@@ -10,7 +10,6 @@ Router.route("/").post(rankingController.addRanking).get(rankingController.showR
 Router.route("/get/all").get(rankingController.showAllRanking);
 
 Router.route("/:id")
-    .get(rankingController.showRankingbyId)
     .patch(rankingController.updateRanking)
     .post(rankingController.deleteRanking);
 

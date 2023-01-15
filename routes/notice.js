@@ -9,7 +9,7 @@ Router.route('/').post(noticeController.addNotice).get(noticeController.getNotic
 
 Router.route('/get/all').get(noticeController.showallNotice);
 
-Router.route('/:id').get(noticeController.getNoticeById).put(noticeController.updateNotice).post(noticeController.deleteNotice);
+Router.route('/:id').put(noticeController.updateNotice).post(noticeController.deleteNotice);
 
 
 
