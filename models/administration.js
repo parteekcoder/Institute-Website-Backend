@@ -10,11 +10,11 @@ const Schema = new mongoose.Schema(
         },
         name: {
             type: String,
-            default: "",
+            required: true,
         },
         designation: {
             type: String,
-            default: "",
+            required: true,
         },
         department: {
             type: String,
@@ -60,6 +60,7 @@ const Schema = new mongoose.Schema(
 
         order: {
             type: Number,
+            default: 0,
         },
     },
     {

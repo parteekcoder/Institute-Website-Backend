@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 //Schema---------------------------->
 const RankingSchema = new mongoose.Schema(
     {
-        Ranking: { type: Object },
+        Ranking: { type: Object, required: true },
         show: { type: Boolean, default: true },
         order:{
           type: Number,
+          default: 0,
       },
         sourceOfInfo: {
             type: Object,

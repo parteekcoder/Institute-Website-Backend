@@ -9,7 +9,7 @@ Router.route('/').post(latestEventController.addLatestEvent).get(latestEventCont
 
 Router.route('/get/all').get(latestEventController.getAllLatestEvent);
 
-Router.route('/:_id').patch(latestEventController.updateLatestEvent).post(latestEventController.deleteLatestEvent).get(latestEventController.getLatestEventById);
+Router.route('/:id').patch(latestEventController.updateLatestEvent).post(latestEventController.deleteLatestEvent);
 
 
 

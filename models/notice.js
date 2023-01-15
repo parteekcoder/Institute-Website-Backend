@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 
 //Schema---------------------------->
 const Schema = new mongoose.Schema({
-    title: { type: String, },
-    desc: { type: String, },
+    title: { type: String,required: true },
+    desc: { type: String,default: "" },
     show: { type: Boolean, default: true },
     order:{
         type: Number,
+        default: 0
     },
     sourceOfInfo: {
         type: Object,
@@ -20,9 +21,10 @@ const Schema = new mongoose.Schema({
     },
     new:{
         type: Boolean,
+        default: true
     },
     
-    image: { type: String, }
+    image: { type: String, default: "" }
 }, {
     timestamps: true,
 });
