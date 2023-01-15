@@ -3,6 +3,7 @@ const Tender = require("../models/tender");
 
 //----------------------------------------------------------------------->
 exports.addTender = async (req, res) => {
+    
     const data = new Tender(req.body);
 
     data.save()

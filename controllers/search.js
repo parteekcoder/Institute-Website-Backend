@@ -55,9 +55,10 @@ exports.globalSearch = async (req, res) => {
         if (tenderData.length > 0) {
             search.tender = tenderData;
         }
-
+        
         res.status(200).json({ search });
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ error });
     }
 };

@@ -9,7 +9,7 @@ Router.route('/').post(upcomingEvent.addUpcomingEvent).get(upcomingEvent.getUpco
 
 Router.route('/get/all').get(upcomingEvent.getAllUpcomingEvent);
 
-Router.route('/:_id').patch(upcomingEvent.updateUpcomingEvent).post(upcomingEvent.deleteUpcomingEvent).get(upcomingEvent.getUpcomingEventById);
+Router.route('/:id').patch(upcomingEvent.updateUpcomingEvent).post(upcomingEvent.deleteUpcomingEvent);
 
 
 

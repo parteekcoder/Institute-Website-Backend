@@ -4,13 +4,14 @@ const mongoose = require("mongoose");
 //Schema---------------------------->
 const Schema = new mongoose.Schema(
     {
-        name: { type: String },
-        messageText: { type: String },
-        designation: { type: String },
+        name: { type: String, required: true },
+        messageText: { type: String, required: true },
+        designation: { type: String,default: "" },
         show: { type: Boolean, default: true },
-        image: { type: String },
+        image: { type: String, default: "" },
         order:{
           type: Number,
+          default: 0,
       },
         sourceOfInfo: {
             type: Object,

@@ -12,6 +12,7 @@ const Schema = new mongoose.Schema({
     },
     order:{
         type: Number,
+        default: 0
     },
     sourceOfInfo: {
         type: Object,
