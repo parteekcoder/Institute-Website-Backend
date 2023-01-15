@@ -29,10 +29,10 @@ const getByDeptAlumni=async(req,res)=>{
 }
 
 const addAlumni=async(req,res)=>{
-    const Alumni=new Alumni({...req.body,department:req.params.dept});
+    const alumni=new Alumni({...req.body,department:req.params.dept});
 
     try {
-        const result=await acadcordinator.save();
+        const result=await alumni.save();
         res.status(201).json(result)
     } catch (error) {
         res.status(400).json("Error: " + error);
