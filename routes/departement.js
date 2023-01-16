@@ -4,6 +4,7 @@ const { getByDeptAchievement, addAchievement, updateAchievement, deleteAchieveme
 const { getByDeptActivity, addActivity, updateActivity, deleteActivity } = require('../controllers/activity');
 const { getByIdAlumni, addAlumni, updateAlumni, deleteAlumni, getByDeptAlumni } = require('../controllers/alumni');
 const { getByIdFaculty, addFaculty, updateFaculty, deleteFaculty, getByDeptFaculty } = require('../controllers/faculty');
+const { getByDeptHOD, addHOD, updateHOD, deleteHOD } = require('../controllers/hodmessage');
 const { getByIdInfrastructure, addInfrastructure, updateInfrastructure, deleteInfrastructure, getByDeptInfrastructure } = require('../controllers/infrastructure');
 const { getByIdPhdScholar, addPhdScholar, updatePhdScholar, deletePhdScholar, getByDeptPhdScholar } = require('../controllers/phdScholar');
 const { getAllPlacement, getByIdPlacement, addPlacement, updatePlacement, deletePlacement, getByDeptPlacement } = require('../controllers/placement');
@@ -63,5 +64,11 @@ Router.get('/:dept/Achievement',getByDeptAchievement);
 Router.post('/:dept/Achievement',addAchievement);
 Router.put('/:dept/Achievement/:id',updateAchievement);
 Router.delete('/:dept/Achievement/:id',deleteAchievement);
+
+Router.get('/:dept/messageofHOD',getByDeptHOD);
+Router.post('/:dept/messageofHOD',addHOD);
+Router.put('/:dept/messageofHOD/:id',updateHOD);
+Router.delete('/:dept/messageofHOD/:id',deleteHOD);
+
 
 module.exports = Router;
