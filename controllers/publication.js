@@ -11,9 +11,15 @@ exports.addPublication = async (req, res) => {
 };
 
 exports.showPublication = async (req, res) => {
-    Publication.find({ show: true })
-        .then((data) => res.status(200).json(data))
-        .catch((err) => res.status(400).json("Error: " + err));
+    if (req.query.id) {
+        Publication.find({ _id: req.query.id })
+            .then((data) => res.status(200).send(data))
+            .catch((err) => res.status(400).json("Error: " + err));
+    } else {
+        Publication.find({ show: true })
+            .then((data) => res.status(200).json(data))
+            .catch((err) => res.status(400).json("Error: " + err));
+    }
 };
 
 exports.showPublicationbyId = async (req, res) => {
@@ -39,7 +45,7 @@ exports.deletePublication = async (req, res) => {
 };
 
 exports.showAllPublication = async (req, res) => {
-    Publication.find({})
+    Publication.find()
         .then((data) => res.status(200).send(data))
         .catch((err) => res.status(400).json("Error: " + err));
 };
