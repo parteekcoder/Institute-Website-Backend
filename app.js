@@ -21,8 +21,10 @@ const clubRouter = require("./routes/club");
 const upcomingEventRouter = require("./routes/upcomingEvent");
 const departmentRouter=require('./routes/departement')
 const searchRouter = require("./routes/search");
-
+const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const login = require("./controllers/authenticate");
+const { verifyUser } = require("./utils/verifyToken");
 //----------------------------------->
 
 //initialize app
@@ -32,6 +34,7 @@ app.use(express.json());
 bodyParser.urlencoded({ extended: true });
 app.use(bodyParser.json());
 app.use(compression());
+app.use(cookieParser());
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -48,6 +51,8 @@ app.use((req, res, next) => {
 });
 
 //routes
+app.use("/login",login);
+app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
 app.use("/latestEvent", latestEvents);
