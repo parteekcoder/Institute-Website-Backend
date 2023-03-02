@@ -8,6 +8,7 @@ const latestEvents = require("./routes/latestEvent");
 const administrationRouter = require("./routes/administration");
 const noticeRouter = require("./routes/notice");
 const rankingRouter = require("./routes/ranking");
+const yearlyRankingRouter = require("./routes/yearlyRanking");
 const timelineRouter = require("./routes/timeline");
 const publicationRouter = require("./routes/publication");
 const tenderRouter = require("./routes/tender");
@@ -19,7 +20,7 @@ const testimonialRouter = require("./routes/testimonial");
 const studentTeamRouter = require("./routes/studentTeam");
 const clubRouter = require("./routes/club");
 const upcomingEventRouter = require("./routes/upcomingEvent");
-const departmentRouter=require('./routes/departement')
+const departmentRouter = require("./routes/departement");
 const searchRouter = require("./routes/search");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -37,28 +38,32 @@ app.use(compression());
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//     if (req.method === "OPTIONS") {
-//         res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//         return res.status(200).json({});
-//     }
-//     if (req.headers.authorization !== process.env.AUTH_TOKEN) {
-//         return res.status(401).json({ message: "Unauthorized" });
-//     }
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  //     if (req.method === "OPTIONS") {
+  //         res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  //         return res.status(200).json({});
+  //     }
+  //     if (req.headers.authorization !== process.env.AUTH_TOKEN) {
+  //         return res.status(401).json({ message: "Unauthorized" });
+  //     }
 
-    next();
+  next();
 });
 
 //routes
-app.use("/login",login);
-app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
+app.use("/login", login);
+app.route("/*").post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
 app.use("/latestEvent", latestEvents);
 app.use("/administration", administrationRouter);
 app.use("/notice", noticeRouter);
 app.use("/ranking", rankingRouter);
+app.use("/yearlyRanking", yearlyRankingRouter);
 app.use("/timeline", timelineRouter);
 app.use("/publication", publicationRouter);
 app.use("/tender", tenderRouter);
@@ -72,7 +77,7 @@ app.use("/club", clubRouter);
 app.use("/upcomingEvent", upcomingEventRouter);
 
 app.use("/search", searchRouter);
-app.use("/dept",departmentRouter);
+app.use("/dept", departmentRouter);
 //Export----------------------------->
 module.exports = app;
 
