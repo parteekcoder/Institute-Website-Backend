@@ -2,7 +2,6 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = require("./app");
 
-//----------------------------------->
 
 process.on("uncoughtException", (err) => {
     console.log("uncought exception occured");
@@ -10,12 +9,8 @@ process.on("uncoughtException", (err) => {
     process.exit(1);
 });
 
-//configuration
-
 dotenv.config({ path: "./.env" });
 
-
-//connection to database------------------------------------------->
 
 mongoose
     .connect(process.env.URI, {

@@ -35,12 +35,13 @@ const obj = {
   LifeatNITJ: [
     "Club & Socities",
     "Scholarships",
-    "Leadership",
-    "Governing Bodies",
-    "Cells",
-    "Committees",
+    "Campus Amenities",
+    "Health And Wellness",
+    "NITJ Festivals",
+    "Accomodation"
   ],
 };
+
 exports.show = async (req, res) => {
   Navbar.findOne({}, (err, data) => {
     if (err) {
@@ -51,10 +52,43 @@ exports.show = async (req, res) => {
   });
 };
 
-//----------------------------------------------------------------------->
-exports.update = async (req, res) => {
-  console.log(req.body);
+function navSort(arr) {
+  
+  for(let i=2;i<arr.length;i++){
+    for(let j=2;j<arr.length;j++){
+      if(arr[j].order>arr[j-1].order){
+        let temp = arr[j];
+        arr[j] = arr[j-1];
+        arr[j-1] = temp;
+      }
+    }
+  }
+  return arr;
+}
 
+exports.sort = async (req, res) => {
+  Navbar.findOne({}, (err, data) => {
+    if (err) {
+      res.Status(500).send("Something wrong happend");
+    } else {
+      const type = req.body.menu;
+      const subtype = req.body.submenu;
+      
+      let idx = obj[`${type}`].indexOf(`${subtype}`);
+      data[`${type}`][idx]=navSort(data[`${type}`][idx])
+
+      Navbar.findOneAndUpdate({}, { $set: data }, (err, data) => {
+        if (err) {
+          res.send("Something wrong happend");
+        } else {
+          res.send(data);
+        }
+      });
+    }
+  });
+}
+
+exports.update = async (req, res) => {
   Navbar.findOne({}, (err, data) => {
     if (err) {
       res.Status(500).send("Something wrong happend");
@@ -64,11 +98,13 @@ exports.update = async (req, res) => {
       const link = req.body.link;
       const name = req.body.name;
       const id = uuid.v4();
-      const order = req.body.order;
+      const order = req.body.order || 0;
 
       let idx = obj[`${type}`].indexOf(`${subtype}`);
       data[`${type}`][idx].push({ name, link, id, order });
-      console.log(data);
+
+      data[`${type}`][idx]=navSort(data[`${type}`][idx])
+
       Navbar.findOneAndUpdate({}, { $set: data }, (err, data) => {
         if (err) {
           res.send("Something wrong happend");
@@ -76,6 +112,8 @@ exports.update = async (req, res) => {
           res.send(data);
         }
       });
+
+     
     }
   });
 };
@@ -137,33 +175,33 @@ exports.create = async (req, res) => {
         Acadmeics: [
           ["Departments", false],
           ["Centers", false],
-          ["Academic System", false],
+          ["Academic System", true],
           ["Academic Services", false],
-          ["Academic facilities", false],
+          ["Academic facilities", true],
           ["Programs of study", false],
-          ["convocation", false],
-          ["other links", false],
+          ["convocation", true],
+          ["other links", true],
         ],
         Admissions: [
           ["Prospective Students", false],
-          ["Anti Raging", false],
+          ["Anti Raging", true],
           ["Join NITJ", false],
-          ["Institute Prospectus", false],
+          ["Institute Prospectus", true],
         ],
         Research: [
           ["Research @NITJ", false],
-          ["Incubation @NITJ", false],
+          ["Incubation @NITJ", true],
           ["Consultancy @NITJ", false],
-          ["Upcoming Events", false],
+          ["Upcoming Events", true],
         ],
         Alumni: [],
         LifeatNITJ: [
-          [ "Club & Socities", false],
-          ["Scholarships", false],
-          ["Leadership", false],
-          ["Governing Bodies", false],
-          ["Cells", false],
-          ["Committees", false],
+          ["Club & Socities", false],
+          ["Scholarships", true],
+          ["Campus Amenities", false],
+          ["Health And Wellness", true],
+          ["NITJ Festivals", false],
+          ["Accomodation", true],
         ],
       });
       await navbar.save();

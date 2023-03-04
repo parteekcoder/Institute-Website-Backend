@@ -11,7 +11,7 @@ Router.use(bodyParser.urlencoded({extended:false}));
 Router.route("/").post(navbarController.create).get(navbarController.show);
 
 Router.route("/update").post(navbarController.update);
-
+Router.route("/sort").post(navbarController.sort);
 Router.route("/delete").post(navbarController.delete);
 
 //Export----------------------------->
