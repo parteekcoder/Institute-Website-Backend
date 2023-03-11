@@ -12,7 +12,7 @@ const getAllFaculty=async(req,res)=>{
 const getByIdFaculty=async(req,res)=>{
 
     try {
-        const result=await Faculty.find(req.params.id);
+        const result=await Faculty.find({_id:req.params.id});
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
