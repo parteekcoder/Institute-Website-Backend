@@ -1,14 +1,14 @@
-const Ranking = require("../models/ranking");
+const YearlyRanking = require("../models/yearlyRanking");
 //----------------------------------->
 
 //----------------------------------------------------------------------->
-exports.addRanking = async (req, res) => {
-  if (req.body?.Ranking === undefined) {
-    return res.status(400).send("Error: Ranking is required");
+exports.addYearlyRanking = async (req, res) => {
+  if (req.body?.YearlyRanking === undefined) {
+    return res.status(400).send("Error: YearlyRanking is required");
   }
 
-  const data = new Ranking({
-    Ranking: req.body?.Ranking,
+  const data = new YearlyRanking({
+    YearlyRanking: req.body?.YearlyRanking,
     sourceOfInfo: {
       name: req.body?.sourceOfInfo?.name,
       email: req.body?.sourceOfInfo?.email,
@@ -24,21 +24,21 @@ exports.addRanking = async (req, res) => {
     .catch((err) => res.status(400).send("Error: " + err));
 };
 
-exports.showRanking = async (req, res) => {
+exports.showYearlyRanking = async (req, res) => {
   if (req.query.id !== undefined) {
-    Ranking.find({ _id: req.query.id })
+    YearlyRanking.find({ _id: req.query.id })
       .then((data) => res.status(200).send(data))
       .catch((err) => res.status(400).send("Error: " + err));
   } else {
-    Ranking.find({ show: true })
+    YearlyRanking.find({ show: true })
       .then((data) => res.status(200).send(data))
       .catch((err) => res.status(400).send("Error: " + err));
   }
 };
 
-exports.updateRanking = async (req, res) => {
-  Ranking.findByIdAndUpdate(req.params.id, {
-    Ranking: req.body?.Ranking,
+exports.updateYearlyRanking = async (req, res) => {
+  YearlyRanking.findByIdAndUpdate(req.params.id, {
+    YearlyRanking: req.body?.YearlyRanking,
     sourceOfInfo: {
       name: req.body?.sourceOfInfo?.name,
       email: req.body?.sourceOfInfo?.email,
@@ -48,21 +48,21 @@ exports.updateRanking = async (req, res) => {
     order: req.body?.order,
   })
     .then(() => {
-      res.status(200).send("Ranking updated successfully");
+      res.status(200).send("YearlyRanking updated successfully");
     })
     .catch((err) => res.status(400).send("Error: " + err));
 };
 
-exports.deleteRanking = async (req, res) => {
-  Ranking.findByIdAndUpdate(req.params.id, { $set: { show: false } })
+exports.deleteYearlyRanking = async (req, res) => {
+  YearlyRanking.findByIdAndUpdate(req.params.id, { $set: { show: false } })
     .then(() => {
-      res.status(200).send("Ranking deleted successfully");
+      res.status(200).send("YearlyRanking deleted successfully");
     })
     .catch((err) => res.status(400).send("Error: " + err));
 };
 
-exports.showAllRanking = async (req, res) => {
-  Ranking.find({})
+exports.showAllYearlyRanking = async (req, res) => {
+  YearlyRanking.find({})
     .then((data) => res.status(200).send(data))
     .catch((err) => res.status(400).send("Error: " + err));
 };
