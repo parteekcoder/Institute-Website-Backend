@@ -10,6 +10,7 @@ const { getByIdPhdScholar, addPhdScholar, updatePhdScholar, deletePhdScholar, ge
 const { getAllPlacement, getByIdPlacement, addPlacement, updatePlacement, deletePlacement, getByDeptPlacement } = require('../controllers/placement');
 const { getByIdStaff, addStaff, updateStaff, deleteStaff, getByDeptStaff } = require('../controllers/staff');
 const { getByIdStudent, addStudent, updateStudent, deleteStudent, getByDeptStudent } = require('../controllers/student');
+const { getByDeptAwards, addAwards, updateAwards, deleteAwards } = require('../controllers/awardsAndHonors');
 
 
 const Router = express.Router();
@@ -69,6 +70,13 @@ Router.get('/:dept/messageofHOD',getByDeptHOD);
 Router.post('/:dept/messageofHOD',addHOD);
 Router.put('/:dept/messageofHOD/:id',updateHOD);
 Router.delete('/:dept/messageofHOD/:id',deleteHOD);
+
+
+Router.get('/:dept/awardsAndHonors',getByDeptAwards);
+Router.post('/:dept/awardsAndHonors',addAwards);
+Router.put('/:dept/awardsAndHonors/:id',updateAwards);
+Router.delete('/:dept/awardsAndHonors/:id',deleteAwards);
+
 
 
 module.exports = Router;
