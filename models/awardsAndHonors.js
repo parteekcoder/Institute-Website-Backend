@@ -21,9 +21,6 @@ const Schema = new mongoose.Schema(
         year:{
             type: Number,
         },
-
-
-
         sourceOfInfo: {
             type: Object,
             default: {
@@ -45,7 +42,7 @@ const Schema = new mongoose.Schema(
 );
 
 //Model---------------------------->
-const Model = mongoose.model("about", Schema);
+const Model = mongoose.model("awardsAndHonors", Schema);
 
 //Export----------------------------->
 module.exports = Model;

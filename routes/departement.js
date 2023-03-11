@@ -15,7 +15,6 @@ const { getByDeptAwards, addAwards, updateAwards, deleteAwards } = require('../c
 
 const Router = express.Router();
 
-
 Router.get('/:dept/Acadcord',getByDeptAcadcord);
 Router.post('/:dept/Acadcord',addAcadcord);
 Router.delete('/:dept/Acadcord/:id',deleteAcadcord);

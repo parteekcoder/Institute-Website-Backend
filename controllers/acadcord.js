@@ -46,7 +46,6 @@ const deleteAcadcord=async(req,res)=>{
         res.status(200).json("Acadcordinator deleted succesfully")
     } catch (error) {
         res.status(400).json("Error: " + error);
-        
     }
 }
 
@@ -56,7 +55,6 @@ const updateAcadcord=async(req,res)=>{
         res.status(200).json("Acadcordinator updated succesfully")
     } catch (error) {
         res.status(400).json("Error: " + error);
-        
     }
 }
 
