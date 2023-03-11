@@ -4,30 +4,16 @@ const Schema=new mongoose.Schema({
     department:{
         type:String
     },
-    name:{
+    title:{
         type:String
     },
-    email:{
+    inventors:{
+        type:[String]
+    },
+    patent_no:{
         type:String
     },
-    img:{
-        type:String
-    },
-    position:{
-        type:String
-    },
-    message:{
-        type:String
-    },
-    phone:{
-        type:String
-    },
-    vision:{
-        type:String
-    },
-    mission:{
-        type:String
-    },
+    
     sourceOfInfo: {
         type: Object,
         default: {
@@ -43,4 +29,4 @@ const Schema=new mongoose.Schema({
     }
 },{timestamps:true})
 
-module.exports=mongoose.model("HOD",Schema);
+module.exports=mongoose.model("Patent",Schema);

@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = require("./app");
-
+//----------------------------------->
 
 process.on("uncoughtException", (err) => {
     console.log("uncought exception occured");

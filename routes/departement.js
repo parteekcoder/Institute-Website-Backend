@@ -15,13 +15,13 @@ const { getByDeptAwards, addAwards, updateAwards, deleteAwards } = require('../c
 
 const Router = express.Router();
 
-
 Router.get('/:dept/Acadcord',getByDeptAcadcord);
 Router.post('/:dept/Acadcord',addAcadcord);
 Router.delete('/:dept/Acadcord/:id',deleteAcadcord);
 Router.put('/:dept/Acadcord/:id',updateAcadcord);
 
 Router.get('/:dept/Faculty',getByDeptFaculty)
+Router.get('/:dept/Faculty/:id',getByIdFaculty);
 Router.post('/:dept/Faculty',addFaculty);
 Router.put('/:dept/Faculty/:id',updateFaculty);
 Router.delete('/:dept/Faculty/:id',deleteFaculty);

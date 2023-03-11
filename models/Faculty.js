@@ -22,7 +22,7 @@ const Schema=new mongoose.Schema({
     },
     dob: {
         type: Date,
-        default: new Date().now()
+        default: ''
     },
     father_name: {
         type: String
@@ -59,7 +59,7 @@ const Schema=new mongoose.Schema({
         // Role, Project Type, Title, Funding Agency, From, To, Amount, Status, Co-investigator
     },
     personal_link: {
-        type: URL,
+        type: String,
     },
     journal: {
         type:Array,

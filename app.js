@@ -11,6 +11,7 @@ const rankingRouter = require("./routes/ranking");
 const yearlyRankingRouter = require("./routes/yearlyRanking");
 const timelineRouter = require("./routes/timeline");
 const publicationRouter = require("./routes/publication");
+const academicCalendarRouter = require('./routes/academicCalendar');
 const tenderRouter = require("./routes/tender");
 const reasearchHighlights = require("./routes/researchHighlights");
 const photoGalleryRouter = require("./routes/photoGallery");
@@ -55,8 +56,8 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use("/login", login);
-// app.route("/*").post(verifyUser).put(verifyUser).delete(verifyUser);
+app.use("/login",login);
+// app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
 app.use("/latestEvent", latestEvents);
@@ -75,7 +76,7 @@ app.use("/testimonial", testimonialRouter);
 app.use("/studentTeam", studentTeamRouter);
 app.use("/club", clubRouter);
 app.use("/upcomingEvent", upcomingEventRouter);
-
+app.use('/academicCalendar', academicCalendarRouter);
 app.use("/search", searchRouter);
 app.use("/dept", departmentRouter);
 //Export----------------------------->
