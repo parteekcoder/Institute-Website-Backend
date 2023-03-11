@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 
 //routes
 app.use("/login",login);
-app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
+// app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
 app.use("/latestEvent", latestEvents);
