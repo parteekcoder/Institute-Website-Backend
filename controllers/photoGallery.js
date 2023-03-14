@@ -6,6 +6,7 @@ exports.add = async (req, res) => {
   const photoGallery = new PhotoGallery({
     image: req.body.image,
     sourceOfInfo: req.body.sourceOfInfo,
+    type: req.body.type,
   });
 
   photoGallery
@@ -17,7 +18,7 @@ exports.add = async (req, res) => {
 exports.get = async (req, res) => {
   try {
     if (req.query.history) {
-      const photos = await PhotoGallery.find({ "image.history": true });
+      const photos = await PhotoGallery.find({ type: "history" });
       return res.status(200).json(photos);
     }
     const photos = await PhotoGallery.find({});
