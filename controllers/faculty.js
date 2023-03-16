@@ -1,18 +1,22 @@
+const passport = require('passport');
 const Faculty= require('../models/Faculty')
+const Sessions = require('../models/session');
 
 const getAllFaculty=async(req,res)=>{
-
     try {
         const result=await Faculty.find({show:true});
+        console.log(result);
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
     }
 }
-const getByIdFaculty=async(req,res)=>{
 
+const getByIdFaculty=async(req,res)=>{
     try {
         const result=await Faculty.find({_id:req.params.id});
+        console.log(res.user);
+        console.log(result);
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
