@@ -4,7 +4,7 @@ const Sessions = require('../models/session');
 
 const getAllFaculty = async (req, res) => {
     try {
-        const result = await Faculty.find({ show: true });
+        const result = await Faculty.find({ show: true }).sort({order:1});
         console.log(result);
         res.status(200).json(result);
     } catch (error) {
