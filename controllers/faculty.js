@@ -15,7 +15,7 @@ const getAllFaculty = async (req, res) => {
 const getByIdFaculty = async (req, res) => {
     try {
         const result = await Faculty.find({ _id: req.params.id });
-        res.status(200).json({ data: result, validation: {status:req.user.login} });
+        res.status(200).json({ data: result, validation: {status:req.user} });
     } catch (error) {
         res.status(400).json("Error: " + error);
     }

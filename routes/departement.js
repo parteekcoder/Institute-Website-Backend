@@ -118,6 +118,7 @@ Router.put("/:dept/Alumni/:id", updateAlumni);
 Router.delete("/:dept/Alumni/:id", deleteAlumni);
 
 Router.get("/:dept/PhdScholar", getByDeptPhdScholar);
+Router.get("/:dept/PhdScholar/:id",getByIdPhdScholar);
 Router.post("/:dept/PhdScholar", addPhdScholar);
 Router.put("/:dept/PhdScholar/:id", updatePhdScholar);
 Router.delete("/:dept/PhdScholar/:id", deletePhdScholar);
