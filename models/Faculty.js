@@ -42,10 +42,35 @@ const Schema=new mongoose.Schema({
     nationality: {
         type: String
     },
-    publications:{
+    book_publications:{
         type: Array,
         default: []
         // Publisher, Authors, ISBN/ISSN, Type, Year, Action
+    },
+    conference_publications:{
+        type: Array,
+        default: []
+        // Confernece
+    },
+    admin_responsibility:{
+        type:Array,
+        default:[]
+    },
+    patent:{
+        type:Array,
+        default:[]
+    },
+    phd_supervised:{
+        type:Array,
+        default:[]
+    },
+    phd_dissertion:{
+        type:Array,
+        default:[]
+    },
+    awards:{
+        type:Array,
+        default:[],
     },
     affiliations:{
         type: Array,

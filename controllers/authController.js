@@ -21,25 +21,26 @@ module.exports.signInAuthentication = async function(req,res,next){
             if(session){
 
                 if(session.user_id == id){
-                    res.user = {
+                    req.user = {
                         isFaculty: true,
                         login: true
                     }
                 }
 
                 else{
-                    res.user = {
+                    req.user = {
                         isFaculty: false,
                         login: true
                     }
                 }
 
                 next();
+                return;
             }
 
             else{
 
-                res.user = {
+                req.user = {
                     isFaculty: false,
                     login: false
                 }
