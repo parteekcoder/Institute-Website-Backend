@@ -8,6 +8,11 @@ const Schema = new mongoose.Schema(
     order: {
       type: Number,
     },
+    type: {
+      type: String,
+      enum: ["photoGallery", "history", "homePageImageSlider"],
+      default: "photoGallery",
+    },
     new: {
       type: Boolean,
     },
