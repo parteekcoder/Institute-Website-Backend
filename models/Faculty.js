@@ -27,10 +27,10 @@ const Schema=new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: false,
     },
     dob: {
-        type: Date,
+        type: String,
         default: ''
     },
     father_name: {

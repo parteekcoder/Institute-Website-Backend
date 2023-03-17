@@ -99,7 +99,7 @@ Router.put("/:dept/Acadcord/:id", updateAcadcord);
 Router.get("/:dept/Faculty", getByDeptFaculty);
 Router.get("/:dept/Faculty/:id",authController.signInAuthentication,getByIdFaculty);
 Router.post("/:dept/Faculty", addFaculty);
-Router.put("/:dept/Faculty/:id", updateFaculty);
+Router.put("/:dept/Faculty/:id", authController.signInAuthentication,updateFaculty);
 Router.delete("/:dept/Faculty/:id", deleteFaculty);
 
 Router.get("/:dept/Placement", getByDeptPlacement);

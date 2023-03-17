@@ -1,10 +1,9 @@
-const passport = require('passport');
 const Faculty = require('../models/Faculty')
 const Sessions = require('../models/session');
 
 const getAllFaculty = async (req, res) => {
     try {
-        const result = await Faculty.find({ show: true }).sort({order:1});
+        const result = await Faculty.find({ show: true },).sort({order:1});
         console.log(result);
         res.status(200).json(result);
     } catch (error) {
@@ -23,7 +22,7 @@ const getByIdFaculty = async (req, res) => {
 
 const getByDeptFaculty = async (req, res) => {
     try {
-        const result = await Faculty.find({ show: true, department: req.params.dept });
+        const result = await Faculty.find({ show: true, department: req.params.dept }).sort({order:1});
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
@@ -54,9 +53,15 @@ const deleteFaculty = async (req, res) => {
 
 const updateFaculty = async (req, res) => {
     try {
-        const result = await Faculty.findByIdAndUpdate(req.params.id, req.body);
-        res.status(200).json("Faculty updated succesfully")
+
+        if(req.user){
+            const result = await Faculty.findById(req.params.id);
+            await result.update({[req.query.q]:req.body});
+            return res.status(200).json("Faculty updated succesfully")
+        }
+        return res.status(401).json("Faculty not Updated");
     } catch (error) {
+        console.log(error);
         res.status(400).json("Error: " + error);
 
     }

@@ -36,10 +36,10 @@ const searchRouter = require("./routes/search");
 //initialize app
 const app = express();
 
-app.use(express.json());
+app.use(express.json({limit:'5mb'}));
 bodyParser.urlencoded({ extended: true });
 app.use(express.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit:'5mb'}));
 app.use(compression());
 app.use(cookieParser());
 const corsOptions ={
