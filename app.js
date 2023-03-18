@@ -8,17 +8,19 @@ const latestEvents = require("./routes/latestEvent");
 const administrationRouter = require("./routes/administration");
 const noticeRouter = require("./routes/notice");
 const rankingRouter = require("./routes/ranking");
+const placementStatRouter = require("./routes/placementStat");
+const instituteProspectusLinkRouter = require("./routes/instituteProspectusLink");
 const yearlyRankingRouter = require("./routes/yearlyRanking");
 const timelineRouter = require("./routes/timeline");
 const publicationRouter = require("./routes/publication");
-const academicCalendarRouter = require('./routes/academicCalendar');
+const academicCalendarRouter = require("./routes/academicCalendar");
 const tenderRouter = require("./routes/tender");
 const reasearchHighlights = require("./routes/researchHighlights");
 const photoGalleryRouter = require("./routes/photoGallery");
 const footerRouter = require("./routes/footer");
 const aboutRouter = require("./routes/about");
 const testimonialRouter = require("./routes/testimonial");
-const specialCentresRouter = require('./routes/specialCentres');
+const specialCentresRouter = require("./routes/specialCentres");
 const studentTeamRouter = require("./routes/studentTeam");
 const academicnoticesRouter = require("./routes/academicnotices");
 const studyProgramRouter = require("./routes/studyprog");
@@ -60,7 +62,7 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use("/login",login);
+app.use("/login", login);
 // app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
@@ -68,13 +70,15 @@ app.use("/latestEvent", latestEvents);
 app.use("/administration", administrationRouter);
 app.use("/notice", noticeRouter);
 app.use("/ranking", rankingRouter);
+app.use("/placementStat", placementStatRouter);
+app.use("/instituteProspectusLink", instituteProspectusLinkRouter);
 app.use("/yearlyRanking", yearlyRankingRouter);
 app.use("/timeline", timelineRouter);
 app.use("/publication", publicationRouter);
-app.use('/academicnotices',academicnoticesRouter);
-app.use('/specialCentres',specialCentresRouter);
+app.use("/academicnotices", academicnoticesRouter);
+app.use("/specialCentres", specialCentresRouter);
 app.use("/tender", tenderRouter);
-app.use('/studyprogramme',studyProgramRouter);
+app.use("/studyprogramme", studyProgramRouter);
 app.use("/researchHighlights", reasearchHighlights);
 app.use("/photoGallery", photoGalleryRouter);
 app.use("/footer", footerRouter);
@@ -83,10 +87,15 @@ app.use("/testimonial", testimonialRouter);
 app.use("/studentTeam", studentTeamRouter);
 app.use("/club", clubRouter);
 app.use("/upcomingEvent", upcomingEventRouter);
-app.use('/academicCalendar', academicCalendarRouter);
+app.use("/academicCalendar", academicCalendarRouter);
 app.use("/search", searchRouter);
 app.use("/dept", departmentRouter);
 //Export----------------------------->
 module.exports = app;
 
 //test code here
+
+/**   "COMPANIES VISITED":"150+",
+        "HIGHEST PACKAGE":"1.2 CR",
+        "STARTUPS":"15+",
+        "NIRF ENGINEERING 2022":"52" */
