@@ -88,7 +88,7 @@ Router.post(
   "/:dept/login",
   authController.createSession
 );
-
+Router.post("/:dept/logout",authController.deleteSession);
 // Router.get('/:dept/Faculty/:id', authController.checkAuthentication)
 
 Router.get("/:dept/Acadcord", getByDeptAcadcord);
