@@ -1,5 +1,6 @@
 const express = require("express");
 const authController = require("../controllers/authController");
+const resetController = require('../controllers/resetPassword');
 
 const {
   getByDeptAcadcord,
@@ -152,5 +153,9 @@ Router.get("/:dept/awardsAndHonors", getByDeptAwards);
 Router.post("/:dept/awardsAndHonors", addAwards);
 Router.put("/:dept/awardsAndHonors/:id", updateAwards);
 Router.delete("/:dept/awardsAndHonors/:id", deleteAwards);
+
+Router.post("/:dept/confirmation", resetController.resetEmailHandler);
+Router.get("/:dept/confirmation/:token", resetController.checkToken);
+Router.post("/:dept/confirmation/:token", resetController.modifyPassword);
 
 module.exports = Router;
