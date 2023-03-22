@@ -1,11 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const compression = require("compression");
-const session = require('express-session');
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
-const MongoStore = require("connect-mongo");
-const dotenv = require("dotenv");
 
 const navBarRouter = require("./routes/navbar");
 const newsRouter = require("./routes/news");
@@ -37,8 +32,6 @@ const searchRouter = require("./routes/search");
 
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const login = require("./controllers/authenticate");
-const { verifyUser } = require("./utils/verifyToken");
 const hostelRouter = require("./routes/hostel");
 const proctorialCellRouter = require("./routes/proctorialCell");
 
