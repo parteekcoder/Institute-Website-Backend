@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const passport = require('passport');
 
 const Schema=new mongoose.Schema({
     department:{
@@ -28,8 +29,16 @@ const Schema=new mongoose.Schema({
         type: String,
         enum: ['male','female','other']
     },
+    email: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: false,
+    },
     dob: {
-        type: Date,
+        type: String,
         default: ''
     },
     father_name: {
@@ -41,21 +50,42 @@ const Schema=new mongoose.Schema({
     nationality: {
         type: String
     },
-    publications:{
+    book_publications:{
         type: Array,
         default: []
         // Publisher, Authors, ISBN/ISSN, Type, Year, Action
+    },
+    conference_publications:{
+        type: Array,
+        default: []
+        // Confernece
+    },
+    admin_responsibility:{
+        type:Array,
+        default:[]
+    },
+    patent:{
+        type:Array,
+        default:[]
+    },
+    phd_supervised:{
+        type:Array,
+        default:[]
+    },
+    phd_dissertion:{
+        type:Array,
+        default:[]
+    },
+    awards:{
+        type:Array,
+        default:[],
     },
     affiliations:{
         type: Array,
         default: []
         // Designation and Organisation
     },
-    affiliations:{
-        type: Array,
-        default: []
-        // Conference, Publication, Publication Link
-    },
+
     research_profile: {
         type:Array,
         default: []
@@ -67,7 +97,8 @@ const Schema=new mongoose.Schema({
         // Role, Project Type, Title, Funding Agency, From, To, Amount, Status, Co-investigator
     },
     personal_link: {
-        type: String,
+        type: Array,
+        default:[]
     },
     journal: {
         type:Array,

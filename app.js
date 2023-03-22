@@ -1,6 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const compression = require("compression");
+const session = require('express-session');
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const MongoStore = require("connect-mongo");
+const dotenv = require("dotenv");
 
 const navBarRouter = require("./routes/navbar");
 const newsRouter = require("./routes/news");
@@ -29,6 +34,7 @@ const clubRouter = require("./routes/club");
 const upcomingEventRouter = require("./routes/upcomingEvent");
 const departmentRouter = require("./routes/departement");
 const searchRouter = require("./routes/search");
+
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const login = require("./controllers/authenticate");
@@ -36,20 +42,26 @@ const { verifyUser } = require("./utils/verifyToken");
 const hostelRouter = require("./routes/hostel");
 const proctorialCellRouter = require("./routes/proctorialCell");
 
-//----------------------------------->
+
 
 //initialize app
 const app = express();
 
-app.use(express.json());
+app.use(express.json({limit:'5mb'}));
 bodyParser.urlencoded({ extended: true });
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.json({limit:'5mb'}));
 app.use(compression());
 app.use(cookieParser());
-app.use(cors());
+const corsOptions ={
+  origin:'http://localhost:3000', 
+  credentials:true,            //access-control-allow-credentials:true
+}
+app.use(cors(corsOptions));
+
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Origin", "");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
@@ -65,8 +77,13 @@ app.use((req, res, next) => {
   next();
 });
 
+      
 //routes
-app.use("/login", login);
+
+// app.use("/login",login);
+
+
+
 // app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
@@ -94,9 +111,12 @@ app.use("/upcomingEvent", upcomingEventRouter);
 app.use("/academicCalendar", academicCalendarRouter);
 app.use("/search", searchRouter);
 app.use("/dept", departmentRouter);
+
 app.use("/resource", resourceRouter);
+
 app.use("/hostel", hostelRouter);
 app.use("/proctorialCell", proctorialCellRouter);
+
 //Export----------------------------->
 module.exports = app;
 
