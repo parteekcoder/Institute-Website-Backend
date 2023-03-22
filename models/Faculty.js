@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose=require('mongoose');
+const passport = require('passport');
 
 const Schema = new mongoose.Schema({
     department: {
@@ -28,6 +29,14 @@ const Schema = new mongoose.Schema({
     gender: {
         type: String,
         enum: ['male', 'female', 'other']
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: false,
     },
     email: {
         type: String,

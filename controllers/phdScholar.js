@@ -12,9 +12,10 @@ const getAllPhdScholar=async(req,res)=>{
 const getByIdPhdScholar=async(req,res)=>{
 
     try {
-        const result=await PhdScholar.find(req.params.id);
+        const result=await PhdScholar.findById(req.params.id);
         res.status(200).json(result);
     } catch (error) {
+        console.log(error);
         res.status(400).json("Error: " + error);
     }
 }
