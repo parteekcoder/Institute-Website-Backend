@@ -11,6 +11,7 @@ const navBarRouter = require("./routes/navbar");
 const newsRouter = require("./routes/news");
 const latestEvents = require("./routes/latestEvent");
 const administrationRouter = require("./routes/administration");
+const resourceRouter = require("./routes/resource");
 const noticeRouter = require("./routes/notice");
 const rankingRouter = require("./routes/ranking");
 const placementStatRouter = require("./routes/placementStat");
@@ -110,6 +111,8 @@ app.use("/upcomingEvent", upcomingEventRouter);
 app.use("/academicCalendar", academicCalendarRouter);
 app.use("/search", searchRouter);
 app.use("/dept", departmentRouter);
+
+app.use("/resource", resourceRouter);
 
 app.use("/hostel", hostelRouter);
 app.use("/proctorialCell", proctorialCellRouter);
