@@ -33,7 +33,15 @@ const clubRouter = require("./routes/club");
 const upcomingEventRouter = require("./routes/upcomingEvent");
 const departmentRouter = require("./routes/departement");
 const searchRouter = require("./routes/search");
-//----------------------------------->
+
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const login = require("./controllers/authenticate");
+const { verifyUser } = require("./utils/verifyToken");
+const hostelRouter = require("./routes/hostel");
+const proctorialCellRouter = require("./routes/proctorialCell");
+
+
 
 //initialize app
 const app = express();
@@ -103,6 +111,8 @@ app.use("/academicCalendar", academicCalendarRouter);
 app.use("/search", searchRouter);
 app.use("/dept", departmentRouter);
 
+app.use("/hostel", hostelRouter);
+app.use("/proctorialCell", proctorialCellRouter);
 
 //Export----------------------------->
 module.exports = app;
