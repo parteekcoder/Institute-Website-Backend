@@ -16,6 +16,14 @@ const Schema=new mongoose.Schema({
     position:{
         type:String
     },
+    education_qualification:{
+        type: Array,
+        default: []
+    },
+    address:{
+        type: Object,
+        default: {}
+    },
     gender: {
         type: String,
         enum: ['male','female','other']
