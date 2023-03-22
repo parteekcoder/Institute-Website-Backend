@@ -77,11 +77,7 @@ const Schema=new mongoose.Schema({
         default: []
         // Designation and Organisation
     },
-    affiliations:{
-        type: Array,
-        default: []
-        // Conference, Publication, Publication Link
-    },
+
     research_profile: {
         type:Array,
         default: []
@@ -93,7 +89,8 @@ const Schema=new mongoose.Schema({
         // Role, Project Type, Title, Funding Agency, From, To, Amount, Status, Co-investigator
     },
     personal_link: {
-        type: String,
+        type: Array,
+        default:[]
     },
     journal: {
         type:Array,
