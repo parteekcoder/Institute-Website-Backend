@@ -156,6 +156,6 @@ Router.delete("/:dept/awardsAndHonors/:id", deleteAwards);
 
 Router.post("/:dept/confirmation", resetController.resetEmailHandler);
 Router.get("/:dept/confirmation/:token", resetController.checkToken);
-Router.post("/:dept/confirmation/:token", resetController.modifyPassword);
+Router.post("/:dept/confirmation/submit/:token", resetController.modifyPassword);
 
 module.exports = Router;

@@ -2,10 +2,6 @@ const Faculty = require('../models/Faculty');
 const PhdScholar = require('../models/PhdScholar');
 const Sessions = require('../models/session');
 
-module.exports.checkAuthentication = function(req,res){
-    
-}
-
 module.exports.signInAuthentication = async function(req,res,next){
     const id = req.params.id;
     const cookie = req.cookies;
