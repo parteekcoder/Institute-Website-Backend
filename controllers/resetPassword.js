@@ -2,10 +2,7 @@ const Faculty = require("../models/Faculty");
 const nodemailer = require("../config/reset_password_mailer");
 const crypto = require("crypto");
 const ResetPassword = require("../models/ResetPassword");
-const { reset } = require("nodemon");
-const Cryptr = require('cryptr');
-
-module.exports.cryptr = new Cryptr('myTotallySecretKey');
+const bcrypt = require('bcrypt');
 
 module.exports.resetEmailHandler = async function (req, res) {
   try {
@@ -87,7 +84,8 @@ module.exports.modifyPassword = async function (req, res) {
   if (resetPasswordToken) {
     if (req.body.password == req.body.repassword) {
         if(req.body.password){
-            let password = await this.cryptr.encrypt(req.body.password);
+            let password = await bcrypt.hash(req.body.password,10);
+            console.log(password);
             await Faculty.findByIdAndUpdate(resetPasswordToken[0]?.user_id, {$set: {"password": password}});
             await ResetPassword.deleteMany({user_id: resetPasswordToken[0]?.user_id});
             return res.status(200).redirect(`http://localhost:3000/dept/${dept}/faculty/${id}`);
