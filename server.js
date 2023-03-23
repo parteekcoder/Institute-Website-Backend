@@ -1,11 +1,9 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = require("./app");
+const {admin_panel,router} = require('./admin_panel')
 //----------------------------------->
-const Faculty = require('./models/Faculty')
-const AdminBro = require('admin-bro')
-const AdminBroMongoose = require('@admin-bro/mongoose')
-const AdminBroExpress = require('@admin-bro/express')
+
 
 process.on("uncoughtException", (err) => {
   console.log("uncought exception occured");
@@ -32,15 +30,11 @@ const port = process.env.PORT || 8000;
 const server = app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
-//Admin Bro
-AdminBro.registerAdapter(AdminBroMongoose)
-const User = mongoose.model('User', { name: String, email: String, surname: String })
-const AdminBroOptions = {
-  resources: [User, Faculty],
-}
-const adminBro = new AdminBro(AdminBroOptions)
-const router = AdminBroExpress.buildRouter(adminBro)
-app.use(adminBro.options.rootPath, router)  
+
+//admin panel 
+app.use(admin_panel.options.rootPath, router)
+
+
 process.on("unhandledRejection", (err) => {
   console.log("unhandleed rejection occured");
   console.log(err.name, err.message);
