@@ -20,7 +20,7 @@
   "dependencies": {
     "@admin-bro/express": "^3.1.0",
     "@admin-bro/mongoose": "^1.1.0",
-    "admin-bro": "^0.3.0",
+    "admin-bro": "^4.0.1",
     "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
     "connect-mongo": "^5.0.0",

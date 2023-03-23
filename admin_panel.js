@@ -12,9 +12,19 @@ const Placement = require('./models/Placement')
 const Staff = require('./models/Staff')
 const Student = require('./models/Student')
 
+const Navbars = require('./models/navbar');
+const Footer = require('./models/footer');
+const Clubs = require('./models/club');
+const News = require('./models/news');
+const About = require('./models/about');
+
+
+
+
 AdminBro.registerAdapter(AdminBroMongoose)
 const AdminBroOptions = {
-  resources: [Faculty,Acadcord,Activity,HOD,Infrastructure,PhdScholar,Placement,Staff,Student],
+  resources: [Faculty,Acadcord,Activity,HOD,Infrastructure,PhdScholar,Placement,Staff,Student,
+              Navbars,Footer,Clubs,News,About],
 }
 const admin_panel = new AdminBro(AdminBroOptions)
 const router = AdminBroExpress.buildRouter(admin_panel)
