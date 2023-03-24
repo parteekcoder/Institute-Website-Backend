@@ -1,6 +1,6 @@
 const Faculty = require("../models/Faculty");
 const PhdScholar = require("../models/PhdScholar");
-const Sessions = require("../models/session");
+const Sessions = require("../models/Session");
 const bcrypt = require("bcrypt");
 
 module.exports.signInAuthentication = async function (req, res, next) {
