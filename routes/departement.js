@@ -82,6 +82,7 @@ const {
   updateAwards,
   deleteAwards,
 } = require("../controllers/awardsAndHonors");
+const { getSocietyClubsByDept } = require("../controllers/societyAndClubs");
 
 const Router = express.Router();
 
@@ -153,6 +154,9 @@ Router.get("/:dept/awardsAndHonors", getByDeptAwards);
 Router.post("/:dept/awardsAndHonors", addAwards);
 Router.put("/:dept/awardsAndHonors/:id", updateAwards);
 Router.delete("/:dept/awardsAndHonors/:id", deleteAwards);
+
+
+Router.get("/:dept/SocietyClubs",getSocietyClubsByDept);
 
 Router.post("/:dept/confirmation", resetController.resetEmailHandler);
 Router.get("/:dept/confirmation/:token", resetController.checkToken);

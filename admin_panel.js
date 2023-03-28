@@ -17,6 +17,7 @@ const Footer = require('./models/footer');
 const Clubs = require('./models/club');
 const News = require('./models/news');
 const About = require('./models/about');
+const SocietyAndCubs = require('./models/SocietyAndCubs')
 
 
 
@@ -24,7 +25,7 @@ const About = require('./models/about');
 AdminBro.registerAdapter(AdminBroMongoose)
 const AdminBroOptions = {
   resources: [Faculty,Acadcord,Activity,HOD,Infrastructure,PhdScholar,Placement,Staff,Student,
-              Navbars,Footer,Clubs,News,About],
+              Navbars,Footer,Clubs,News,About,SocietyAndCubs],
 }
 const admin_panel = new AdminBro(AdminBroOptions)
 const router = AdminBroExpress.buildRouter(admin_panel)
