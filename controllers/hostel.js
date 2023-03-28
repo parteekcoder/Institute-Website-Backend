@@ -11,7 +11,7 @@ exports.addHostel = async (req, res) => {
 //----------------------------------------------------------------------->
 
 exports.getHostelbyId = async (req, res) => {
-    Hostel.findById(req.params.id)
+    hostel.findById(req.params.id)
         .then((data) => res.status(200).send(data))
         .catch((err) => res.status(400).json("Error: " + err));
 };
