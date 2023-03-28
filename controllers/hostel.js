@@ -8,7 +8,13 @@ exports.addHostel = async (req, res) => {
         .then(() => res.status(201).json(Hostel))
         .catch((err) => res.status(500).json("Error: " + err));
 };
+//----------------------------------------------------------------------->
 
+exports.getHostelbyId = async (req, res) => {
+    Hostel.findById(req.params.id)
+        .then((data) => res.status(200).send(data))
+        .catch((err) => res.status(400).json("Error: " + err));
+};
 //----------------------------------------------------------------------->
 exports.getHostel = async (req, res) => {
     hostel
