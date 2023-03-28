@@ -12,9 +12,7 @@ Router.route('/')
 Router.route('/get/all')
     .get(hostelController.getHostelall);
 
-Router.route('/:id')
-    .patch(hostelController.updateHostel)
-    .post(hostelController.deleteHostel);
+Router.route('/:id').get(hostelController.getHostelbyId).patch(hostelController.updateHostel).post(hostelController.deleteHostel);
 
 //Export----------------------------->
 module.exports = Router;
