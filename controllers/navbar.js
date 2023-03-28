@@ -31,7 +31,9 @@ const obj = {
     "Consultancy @NITJ",
     "Upcoming Events",
   ],
-  Alumni: [],
+  Alumni: [
+    "Alumni"
+  ],
   LifeatNITJ: [
     "Club & Socities",
     "Scholarships",
@@ -75,7 +77,10 @@ exports.sort = async (req, res) => {
       const subtype = req.body.submenu;
       
       let idx = obj[`${type}`].indexOf(`${subtype}`);
+      console.log(idx);
       data[`${type}`][idx]=navSort(data[`${type}`][idx])
+
+      
 
       Navbar.findOneAndUpdate({}, { $set: data }, (err, data) => {
         if (err) {
@@ -98,17 +103,23 @@ exports.update = async (req, res) => {
       const link = req.body.link;
       const name = req.body.name;
       const id = uuid.v4();
-      const order = req.body.order || 0;
+      let order = req.body.order || 0;
+
+      if(typeof(order)!="number")
+        order=Number(order);
+      
+      console.log(type,subtype,link,name,id,order);
 
       let idx = obj[`${type}`].indexOf(`${subtype}`);
       data[`${type}`][idx].push({ name, link, id, order });
-
+      
       data[`${type}`][idx]=navSort(data[`${type}`][idx])
 
       Navbar.findOneAndUpdate({}, { $set: data }, (err, data) => {
         if (err) {
           res.send("Something wrong happend");
         } else {
+          console.log("done");
           res.send(data);
         }
       });
@@ -117,6 +128,7 @@ exports.update = async (req, res) => {
     }
   });
 };
+
 
 //----------------------------------------------------------------------->
 exports.delete = async (req, res) => {
@@ -129,21 +141,25 @@ exports.delete = async (req, res) => {
       const id = req.body.id;
 
       let data = await Navbar.findOne({});
-      let ind = 0;
+      let ind = -1;
 
       for (let i = 0; i < data[`${type}`].length; i++) {
         if (data[`${type}`][i][0] === subtype) {
           ind = i;
+          break;
         }
       }
+      
+
+      if(ind==-1) return res.send("Something wrong happend");
+
 
       for (let i = 2; i < data[`${type}`][ind].length; i++) {
         if (data[`${type}`][ind][i].id === id) {
-          data[`${type}`][ind].splice(i, 1);
+          data[`${type}`][ind].splice(i,1);
+          break;
         }
       }
-
-      console.log(data);
 
       Navbar.findOneAndUpdate({}, { $set: data }, (err, data) => {
         if (err) {

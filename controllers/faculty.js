@@ -1,5 +1,5 @@
 const Faculty = require('../models/Faculty')
-const Sessions = require('../models/session');
+const Sessions = require('../models/Session');
 
 const getAllFaculty = async (req, res) => {
     try {
